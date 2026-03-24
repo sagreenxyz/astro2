@@ -208,5 +208,94 @@
     "definition": "A TypeScript-first schema declaration and validation library used in Astro Content Collections to define and validate the frontmatter schema of content files.",
     "relatedTerms": ["Content Collections", "TypeScript"],
     "slug": "zod"
+  },
+  {
+    "term": "HAI",
+    "fullForm": "Healthcare-Associated Infection",
+    "definition": "An infection that a patient acquires during the course of receiving healthcare treatment and that was not present or incubating at the time of admission. Also called a nosocomial infection. Major types include CLABSI, CAUTI, VAP, SSI, and CDI.",
+    "relatedTerms": ["CLABSI", "CAUTI", "VAP", "Standard Precautions", "Infection Control"],
+    "slug": "hai"
+  },
+  {
+    "term": "CLABSI",
+    "fullForm": "Central Line-Associated Bloodstream Infection",
+    "definition": "A laboratory-confirmed bloodstream infection in a patient who had a central venous catheter in place within the 48-hour period before the onset of infection, with no other identified source of infection. Preventable through the IHI CLABSI prevention bundle.",
+    "relatedTerms": ["HAI", "Central Venous Catheter", "Infection Control"],
+    "slug": "clabsi"
+  },
+  {
+    "term": "CAUTI",
+    "fullForm": "Catheter-Associated Urinary Tract Infection",
+    "definition": "A urinary tract infection occurring in a patient who had an indwelling urinary catheter in place within 48 hours before the onset of infection. One of the most common and preventable HAIs; prevention centers on avoiding unnecessary catheter use and prompt removal.",
+    "relatedTerms": ["HAI", "Urinary Catheter", "Infection Control"],
+    "slug": "cauti"
+  },
+  {
+    "term": "VAP",
+    "fullForm": "Ventilator-Associated Pneumonia",
+    "definition": "Pneumonia that develops in a patient who has been receiving mechanical ventilation via an endotracheal or tracheostomy tube for more than 48 hours. Prevention includes elevating the head of bed 30–45°, oral care with chlorhexidine, and daily readiness-to-extubate assessments.",
+    "relatedTerms": ["HAI", "Mechanical Ventilation", "Infection Control"],
+    "slug": "vap"
+  },
+  {
+    "term": "PPE",
+    "fullForm": "Personal Protective Equipment",
+    "definition": "Specialized equipment worn by healthcare workers to protect against exposure to infectious materials. Includes gloves, gowns, surgical masks, N95 respirators, eye protection (goggles/face shields), and powered air-purifying respirators (PAPRs). Proper donning and doffing sequences are essential to prevent self-contamination.",
+    "relatedTerms": [
+      "Standard Precautions",
+      "Transmission-Based Precautions",
+      "N95",
+      "Infection Control"
+    ],
+    "slug": "ppe"
+  },
+  {
+    "term": "MRSA",
+    "fullForm": "Methicillin-Resistant Staphylococcus aureus",
+    "definition": "A strain of Staphylococcus aureus bacteria resistant to methicillin and other penicillin-class antibiotics. A leading cause of healthcare-associated infections. Requires contact precautions in healthcare settings. Spread primarily through direct skin-to-skin contact and contact with contaminated surfaces.",
+    "relatedTerms": ["HAI", "Contact Precautions", "Antibiotic Resistance", "Standard Precautions"],
+    "slug": "mrsa"
+  },
+  {
+    "term": "CDI",
+    "fullForm": "Clostridioides difficile Infection",
+    "definition": "A colon infection caused by the spore-forming bacterium Clostridioides difficile (formerly Clostridium difficile), most often triggered by antibiotic use that disrupts normal gut flora. Presents with diarrhea (≥3 loose stools/day), abdominal cramping, and fever. Requires contact precautions and soap-and-water hand hygiene (alcohol-based hand rubs do not kill C. diff spores).",
+    "relatedTerms": ["HAI", "Contact Precautions", "Antibiotic Stewardship", "Infection Control"],
+    "slug": "cdi"
+  },
+  {
+    "term": "Standard Precautions",
+    "definition": "The minimum level of infection prevention practices applied in the care of all patients in any healthcare setting, regardless of suspected or confirmed infection status. Based on the principle that blood, body fluids (except sweat), non-intact skin, and mucous membranes may contain infectious agents. Components include hand hygiene, PPE, safe injection practices, respiratory hygiene, and sharps safety.",
+    "relatedTerms": ["PPE", "Hand Hygiene", "Transmission-Based Precautions", "Infection Control"],
+    "slug": "standard-precautions"
+  },
+  {
+    "term": "Chain of Infection",
+    "definition": "A six-link epidemiological model describing the sequential steps required for an infectious disease to spread: (1) infectious agent, (2) reservoir, (3) portal of exit, (4) mode of transmission, (5) portal of entry, and (6) susceptible host. Breaking any link in the chain prevents disease transmission.",
+    "relatedTerms": ["Infection Control", "Transmission-Based Precautions", "Standard Precautions"],
+    "slug": "chain-of-infection"
+  },
+  {
+    "term": "Aseptic Technique",
+    "definition": "A set of practices designed to prevent pathogenic microorganisms from contaminating sterile items, body tissues, or body cavities during patient care. Surgical (sterile) aseptic technique maintains a completely sterile field; medical (clean) aseptic technique reduces microbial counts to a safe level without achieving full sterility.",
+    "relatedTerms": ["Infection Control", "Standard Precautions", "Wound Care", "PPE"],
+    "slug": "aseptic-technique"
+  },
+  {
+    "term": "Airborne Precautions",
+    "definition": "Transmission-based precautions used for patients with known or suspected infections transmitted via small-particle aerosols (droplet nuclei ≤5 µm) that remain suspended in air over long distances. Requires placement in an airborne infection isolation room (AIIR) with negative pressure and ≥12 air changes per hour, and use of an N95 or higher respirator by all who enter the room. Indicated for tuberculosis, measles, varicella, and disseminated herpes zoster.",
+    "relatedTerms": [
+      "Transmission-Based Precautions",
+      "N95",
+      "Contact Precautions",
+      "Droplet Precautions"
+    ],
+    "slug": "airborne-precautions"
+  },
+  {
+    "term": "Antibiotic Stewardship",
+    "definition": "A coordinated effort to optimize the selection, dose, route, and duration of antibiotic therapy to achieve the best clinical outcomes while minimizing adverse events, including the emergence and spread of antibiotic-resistant organisms. Nurses play a key role by obtaining cultures before antibiotic administration, monitoring for adverse effects, and educating patients about completing prescribed courses.",
+    "relatedTerms": ["CDI", "MRSA", "HAI", "Infection Control"],
+    "slug": "antibiotic-stewardship"
   }
 ]
