@@ -7,6 +7,132 @@
     "slug": "lms"
   },
   {
+    "term": "BSN",
+    "fullForm": "Bachelor of Science in Nursing",
+    "definition": "A four-year undergraduate nursing degree that prepares graduates for professional nursing practice. BSN-prepared nurses demonstrate competency in evidence-based practice, leadership, community health, and research-based care.",
+    "relatedTerms": ["RN", "AACN Essentials", "NCLEX-NG", "CCNE", "ACEN"],
+    "slug": "bsn"
+  },
+  {
+    "term": "RN",
+    "fullForm": "Registered Nurse",
+    "definition": "A nurse who has graduated from a nursing program, passed the NCLEX-RN licensing examination, and is licensed by a state or territory to practice professional nursing.",
+    "relatedTerms": ["BSN", "NCLEX-NG", "Scope of Practice"],
+    "slug": "rn"
+  },
+  {
+    "term": "AACN Essentials",
+    "fullForm": "American Association of Colleges of Nursing Essentials",
+    "definition": "A competency-based framework (revised 2021) that defines the 10 domains of knowledge, skills, and attitudes expected of all nursing graduates. Domains include Person-Centered Care, Population Health, Quality and Safety, Informatics, and Professionalism.",
+    "relatedTerms": ["BSN", "Competency-Based Education", "CCNE", "QSEN"],
+    "slug": "aacn-essentials"
+  },
+  {
+    "term": "QSEN",
+    "fullForm": "Quality and Safety Education for Nurses",
+    "definition": "A national initiative that defines six core competencies for nursing education: Patient-Centered Care, Teamwork and Collaboration, Evidence-Based Practice (EBP), Quality Improvement (QI), Safety, and Informatics.",
+    "relatedTerms": ["AACN Essentials", "EBP", "Patient Safety", "QI"],
+    "slug": "qsen"
+  },
+  {
+    "term": "NCLEX-NG",
+    "fullForm": "Next Generation National Council Licensure Examination",
+    "definition": "The updated nursing licensure examination that emphasizes clinical judgment using the Clinical Judgment Measurement Model (CJMM). The CJMM includes six layers: Recognize Cues, Analyze Cues, Prioritize Hypotheses, Generate Solutions, Take Action, and Evaluate Outcomes.",
+    "relatedTerms": ["RN", "Clinical Judgment", "CJMM"],
+    "slug": "nclex-ng"
+  },
+  {
+    "term": "CJMM",
+    "fullForm": "Clinical Judgment Measurement Model",
+    "definition": "The NCSBN's model for measuring clinical judgment in the NCLEX-NG. Composed of six layers: Recognize Cues, Analyze Cues, Prioritize Hypotheses, Generate Solutions, Take Action, and Evaluate Outcomes.",
+    "relatedTerms": ["NCLEX-NG", "Clinical Judgment", "Critical Thinking"],
+    "slug": "cjmm"
+  },
+  {
+    "term": "CCNE",
+    "fullForm": "Commission on Collegiate Nursing Education",
+    "definition": "An autonomous accrediting agency committed to the quality and integrity of baccalaureate, graduate, and residency programs in nursing. CCNE accreditation evaluates programs against four standards: Mission and Governance, Institutional Commitment and Resources, Curriculum, and Program Effectiveness.",
+    "relatedTerms": ["Accreditation", "ACEN", "BSN", "AACN Essentials"],
+    "slug": "ccne"
+  },
+  {
+    "term": "ACEN",
+    "fullForm": "Accreditation Commission for Education in Nursing",
+    "definition": "An accrediting body for nursing education programs at the clinical doctorate, master's, baccalaureate, associate, diploma, and practical levels. ACEN evaluates programs against six standards: Mission, Faculty, Students, Curriculum, Resources, and Outcomes.",
+    "relatedTerms": ["Accreditation", "CCNE", "BSN"],
+    "slug": "acen"
+  },
+  {
+    "term": "EBP",
+    "fullForm": "Evidence-Based Practice",
+    "definition": "A problem-solving approach to the delivery of health care that integrates the best evidence from studies and patient care data with clinician expertise and patient preferences and values.",
+    "relatedTerms": ["QSEN", "Research", "Clinical Judgment", "AACN Essentials"],
+    "slug": "ebp"
+  },
+  {
+    "term": "Clinical Judgment",
+    "fullForm": "Clinical Judgment",
+    "definition": "The observed outcome of critical thinking and decision-making, representing the complex process by which nurses integrate knowledge, experience, reasoning, and intuition to interpret and respond to client situations.",
+    "relatedTerms": ["NCLEX-NG", "CJMM", "Critical Thinking", "EBP"],
+    "slug": "clinical-judgment"
+  },
+  {
+    "term": "Pathophysiology",
+    "fullForm": "Pathophysiology",
+    "definition": "The study of the physiological processes associated with disease or injury. Understanding pathophysiology enables nurses to recognize cues, analyze findings, and make clinical judgments about patient care.",
+    "relatedTerms": ["NCLEX-NG", "Clinical Judgment", "Pharmacology"],
+    "slug": "pathophysiology"
+  },
+  {
+    "term": "Pharmacology",
+    "fullForm": "Pharmacology",
+    "definition": "The study of drugs, their mechanisms of action, therapeutic uses, adverse effects, and nursing implications. A core component of NCLEX-NG (Pharmacological and Parenteral Therapies category) and patient safety.",
+    "relatedTerms": ["NCLEX-NG", "Patient Safety", "Pathophysiology"],
+    "slug": "pharmacology"
+  },
+  {
+    "term": "Patient Safety",
+    "fullForm": "Patient Safety",
+    "definition": "The prevention of errors and adverse effects to patients associated with health care. A core QSEN competency and AACN Essentials domain (Quality and Safety). Includes the use of checklists, handoff communication, and safety culture.",
+    "relatedTerms": ["QSEN", "AACN Essentials", "Quality Improvement", "SBAR"],
+    "slug": "patient-safety"
+  },
+  {
+    "term": "SBAR",
+    "fullForm": "Situation, Background, Assessment, Recommendation",
+    "definition": "A structured communication framework used in healthcare to facilitate prompt and accurate communication among team members. SBAR is a key interprofessional communication tool aligned with QSEN Teamwork and Collaboration and AACN Essentials D6.",
+    "relatedTerms": ["QSEN", "AACN Essentials", "Interprofessional Education"],
+    "slug": "sbar"
+  },
+  {
+    "term": "IPE",
+    "fullForm": "Interprofessional Education",
+    "definition": "An approach in education where students from two or more professions learn about, from, and with each other to enable effective collaboration and improve health outcomes. Aligned with QSEN Teamwork and Collaboration and AACN Essentials D6.",
+    "relatedTerms": ["QSEN", "AACN Essentials", "Teamwork", "SBAR"],
+    "slug": "ipe"
+  },
+  {
+    "term": "Simulation",
+    "fullForm": "Simulation-Based Learning",
+    "definition": "A teaching strategy that replicates the real-world clinical environment for the purpose of practicing procedures, honing skills, and integrating knowledge without risk to real patients. Used extensively in BSN programs.",
+    "relatedTerms": ["Clinical Judgment", "Debriefing", "High-Fidelity Simulation"],
+    "slug": "simulation"
+  },
+  {
+    "term": "ATI",
+    "fullForm": "Assessment Technologies Institute",
+    "definition": "A provider of nursing education tools, assessments, and practice materials including the TEAS exam, proctored ATI assessments, and remediation resources. Widely used in BSN programs to predict NCLEX success.",
+    "relatedTerms": ["NCLEX-NG", "BSN", "Remediation"],
+    "slug": "ati"
+  },
+  {
+    "term": "Competency-Based Education",
+    "fullForm": "Competency-Based Education",
+    "definition": "An educational approach that focuses on students demonstrating specific, measurable competencies rather than simply completing time-based requirements. The AACN Essentials (2021) are written as competency-based outcomes.",
+    "relatedTerms": ["AACN Essentials", "QSEN", "Learning Objectives", "Program Outcomes"],
+    "slug": "competency-based-education"
+  },
+  {
     "term": "Astro",
     "fullForm": "Astro.build",
     "definition": "A modern static site builder designed for content-heavy websites. Uses an island architecture to ship zero JavaScript by default, hydrating interactive components only when needed.",

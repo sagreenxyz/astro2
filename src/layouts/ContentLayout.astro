@@ -1,5 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import CompetencyMap from '../components/lms/CompetencyMap.svelte';
+import type { CurriculumAlignment } from '../types/nursing';
 
 export interface Props {
   title: string;
@@ -7,9 +9,11 @@ export interface Props {
   publishedAt?: Date;
   updatedAt?: Date;
   tags?: string[];
+  /** Optional BSN nursing curriculum alignment metadata */
+  curriculum?: CurriculumAlignment;
 }
 
-const { title, description, publishedAt, updatedAt, tags = [] } = Astro.props;
+const { title, description, publishedAt, updatedAt, tags = [], curriculum } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -47,5 +51,7 @@ const { title, description, publishedAt, updatedAt, tags = [] } = Astro.props;
     <div class="prose prose-lms max-w-none">
       <slot />
     </div>
+
+    {curriculum && <CompetencyMap alignment={curriculum} client:load />}
   </article>
 </BaseLayout>

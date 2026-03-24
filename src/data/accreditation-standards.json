@@ -1,0 +1,132 @@
+{
+  "ccne": {
+    "name": "Commission on Collegiate Nursing Education",
+    "fullName": "CCNE Accreditation Standards for Nursing Education Programs",
+    "edition": "2023",
+    "website": "https://www.aacnnursing.org/CCNE",
+    "standards": [
+      {
+        "id": "CCNE-I",
+        "title": "Standard I: Mission and Governance",
+        "description": "The mission, philosophy, and goals of the program are appropriate to higher education, reflect professional nursing standards and guidelines, and are congruent with the governing organization's mission. The governance structure is functional, and program outcomes are consistent with and reflective of the program type.",
+        "keyElements": [
+          "I-A: The mission, philosophy, and program outcomes are clearly stated and publicly accessible.",
+          "I-B: The governing organization and the nursing program support a culture of excellence and continuous quality improvement.",
+          "I-C: The program is in compliance with applicable standards, guidelines, and requirements of the governing organization, accreditation organizations, and state and federal agencies.",
+          "I-D: The program faculty or institutional personnel develop the curriculum, have ownership of the curriculum, and are responsible for the academic quality of the program."
+        ]
+      },
+      {
+        "id": "CCNE-II",
+        "title": "Standard II: Institutional Commitment and Resources",
+        "description": "The governing organization and program provide the fiscal, physical, and learning resources to enable the program to achieve its mission, philosophy, and program outcomes.",
+        "keyElements": [
+          "II-A: There is a sufficient number of qualified faculty with appropriate graduate preparation and nursing practice expertise to achieve the program mission and outcomes.",
+          "II-B: The governing organization and program provide and support effective learning environments that meet the needs of faculty and students.",
+          "II-C: The governing organization and program provide and maintain adequate fiscal resources."
+        ]
+      },
+      {
+        "id": "CCNE-III",
+        "title": "Standard III: Curriculum, Teaching-Learning Practices, and Individual Program Outcomes",
+        "description": "The curriculum is developed, implemented, and revised to reflect clear statements of expected student outcomes, is based on sound educational principles, and reflects current nursing and health care trends.",
+        "keyElements": [
+          "III-A: The curriculum is developed, implemented, and revised to reflect the program's mission, philosophy, and program outcomes.",
+          "III-B: The curriculum is designed to meet the identified program outcomes and is consistent with current and best practices.",
+          "III-C: Teaching-learning practices reflect current pedagogical research and trends.",
+          "III-D: The program prepares graduates for practice at the appropriate role and scope.",
+          "III-E: The curriculum incorporates interprofessional learning experiences."
+        ]
+      },
+      {
+        "id": "CCNE-IV",
+        "title": "Standard IV: Program Effectiveness: Assessment and Achievement of Program Outcomes",
+        "description": "The program regularly and continuously engages in assessment activities to evaluate the extent to which it meets its mission, philosophy, and program outcomes.",
+        "keyElements": [
+          "IV-A: A systematic evaluation plan is in place and used to assess program effectiveness and drive continuous quality improvement.",
+          "IV-B: Faculty are using evidence-based practice in teaching.",
+          "IV-C: The program documents formal, integrated, and ongoing formal assessment activities.",
+          "IV-D: Program completion rates demonstrate program effectiveness.",
+          "IV-E: Licensure and certification pass rates demonstrate program effectiveness.",
+          "IV-F: Employment rates demonstrate program effectiveness."
+        ]
+      }
+    ]
+  },
+  "acen": {
+    "name": "Accreditation Commission for Education in Nursing",
+    "fullName": "ACEN Accreditation Standards and Criteria",
+    "edition": "2020",
+    "website": "https://www.acenursing.org",
+    "standards": [
+      {
+        "id": "ACEN-1",
+        "title": "Standard 1: Mission and Administrative Capacity",
+        "description": "The mission of the nursing program reflects the governing organization's core values and is congruent with its mission/goals. The nursing program has administrative capacity resulting in effective delivery of the nursing program and achievement of identified program outcomes.",
+        "criteria": [
+          "1.1: The mission of the nursing program is congruent with the governing organization's mission.",
+          "1.2: Program outcomes reflect the expectations of the community of interest.",
+          "1.3: The nursing program has adequate resources to support the achievement of the program outcomes.",
+          "1.4: Institutional policies for faculty and students are clearly documented."
+        ]
+      },
+      {
+        "id": "ACEN-2",
+        "title": "Standard 2: Faculty and Staff",
+        "description": "The nurse administrator and faculty are: academically prepared for the roles and responsibilities they assume and maintain expertise in their areas of responsibility; and sufficient in number to ensure the achievement of the end-of-program student learning outcomes and program outcomes.",
+        "criteria": [
+          "2.1: The nurse administrator has authority and responsibility for the nursing program.",
+          "2.2: The nurse administrator is academically prepared and professionally qualified.",
+          "2.3: Faculty credentials and expertise are appropriate for their responsibilities.",
+          "2.4: Faculty maintain clinical competence in their areas of responsibility.",
+          "2.5: The number of faculty is sufficient to ensure program quality."
+        ]
+      },
+      {
+        "id": "ACEN-3",
+        "title": "Standard 3: Students",
+        "description": "The nursing program's student policies are comprehensive, properly safeguard student rights, and are consistent with accepted educational practices.",
+        "criteria": [
+          "3.1: Student policies are comprehensive and publicly accessible.",
+          "3.2: Student selection criteria are applied consistently.",
+          "3.3: Progression policies are consistent and applied consistently.",
+          "3.4: Students are provided access to support services."
+        ]
+      },
+      {
+        "id": "ACEN-4",
+        "title": "Standard 4: Curriculum",
+        "description": "The curriculum prepares students to achieve the end-of-program student learning outcomes and program outcomes, including safe practice in contemporary health care environments.",
+        "criteria": [
+          "4.1: The curriculum is developed by faculty and regularly reviewed.",
+          "4.2: Curricula reflect professional nursing standards and guidelines.",
+          "4.3: Didactic, simulation, and clinical experiences align with expected student outcomes.",
+          "4.4: Clinical experiences are appropriate and supervised.",
+          "4.5: Systematic and continuous evaluation of curriculum drives improvement."
+        ]
+      },
+      {
+        "id": "ACEN-5",
+        "title": "Standard 5: Resources",
+        "description": "The fiscal, physical, clinical, and learning resources are sufficient to enable the program to fulfill its mission, meet program outcomes, and provide effective instruction.",
+        "criteria": [
+          "5.1: Fiscal resources are sufficient and stable.",
+          "5.2: Physical resources support the delivery of the nursing program.",
+          "5.3: Learning resources are current and accessible.",
+          "5.4: Clinical sites are appropriate and adequately supervised."
+        ]
+      },
+      {
+        "id": "ACEN-6",
+        "title": "Standard 6: Outcomes",
+        "description": "Program outcomes demonstrate that the program is effective and supports continuous quality improvement.",
+        "criteria": [
+          "6.1: Program completion rates demonstrate program effectiveness.",
+          "6.2: Licensure exam pass rates demonstrate program effectiveness.",
+          "6.3: Job placement rates demonstrate program effectiveness.",
+          "6.4: Program satisfaction rates are tracked and used for improvement."
+        ]
+      }
+    ]
+  }
+}

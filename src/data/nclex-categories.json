@@ -1,0 +1,210 @@
+{
+  "model": "NCLEX-NG Clinical Judgment Measurement Model (CJMM)",
+  "description": "The Next Generation NCLEX (NCLEX-NG) emphasizes clinical judgment using a six-layer measurement model.",
+  "clinicalJudgmentLayers": [
+    {
+      "id": "RC",
+      "layer": "Recognize Cues",
+      "description": "Identify relevant information from many sources (e.g., medical history, vital signs) about the client's current condition.",
+      "examples": [
+        "Identify significant changes in vital signs.",
+        "Recognize abnormal laboratory findings.",
+        "Identify relevant data from a health history."
+      ]
+    },
+    {
+      "id": "AC",
+      "layer": "Analyze Cues",
+      "description": "Connect recognized cues to the client's clinical presentation and determine what the cues mean.",
+      "examples": [
+        "Connect assessment findings to pathophysiology.",
+        "Analyze patterns in patient data to identify trends.",
+        "Distinguish between expected and unexpected findings."
+      ]
+    },
+    {
+      "id": "PH",
+      "layer": "Prioritize Hypotheses",
+      "description": "Evaluate and prioritize hypotheses (explanations) for the client's condition to determine the most likely explanation.",
+      "examples": [
+        "Rank possible client conditions by urgency.",
+        "Weigh evidence to determine the most probable clinical explanation.",
+        "Determine which potential problems pose the greatest risk."
+      ]
+    },
+    {
+      "id": "GS",
+      "layer": "Generate Solutions",
+      "description": "Identify expected outcomes and use clinical judgment to determine possible interventions to address client needs.",
+      "examples": [
+        "Identify interventions to address urgent clinical needs.",
+        "Generate a list of appropriate nursing actions.",
+        "Determine which outcomes are realistic given the clinical context."
+      ]
+    },
+    {
+      "id": "TA",
+      "layer": "Take Action",
+      "description": "Implement the solution with the highest priority that addresses the client need.",
+      "examples": [
+        "Perform the priority nursing intervention.",
+        "Administer medications safely.",
+        "Implement evidence-based protocols."
+      ]
+    },
+    {
+      "id": "EO",
+      "layer": "Evaluate Outcomes",
+      "description": "Evaluate the outcomes of the interventions to determine if the expected outcomes were achieved.",
+      "examples": [
+        "Compare client response to expected outcomes.",
+        "Determine whether goals were met.",
+        "Revise the plan of care based on evaluation findings."
+      ]
+    }
+  ],
+  "clientNeedsCategories": [
+    {
+      "id": "SECE",
+      "category": "Safe and Effective Care Environment",
+      "subcategories": [
+        {
+          "id": "MC",
+          "name": "Management of Care",
+          "percentRange": "17-23%",
+          "topics": [
+            "Advance Directives/Self-Determination/Life Planning",
+            "Advocacy",
+            "Case Management",
+            "Client Rights",
+            "Collaboration with Interdisciplinary Team",
+            "Concepts of Management",
+            "Continuity of Care",
+            "Delegation and Supervision",
+            "Ethical Practice",
+            "Informed Consent",
+            "Legal Rights and Responsibilities",
+            "Performance Improvement (Quality Improvement)",
+            "Prioritization",
+            "Referrals"
+          ]
+        },
+        {
+          "id": "SIC",
+          "name": "Safety and Infection Control",
+          "percentRange": "9-15%",
+          "topics": [
+            "Accident/Error/Injury Prevention",
+            "Emergency Response Plan",
+            "Ergonomic Principles",
+            "Handling Hazardous and Infectious Materials",
+            "Home Safety",
+            "Reporting of Incident/Event/Irregular Occurrence",
+            "Safe Use of Equipment",
+            "Security Plan",
+            "Standard Precautions",
+            "Use of Restraints"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HPM",
+      "category": "Health Promotion and Maintenance",
+      "percentRange": "6-12%",
+      "topics": [
+        "Aging Process",
+        "Ante/Intra/Postpartum and Newborn Care",
+        "Developmental Stages and Transitions",
+        "Health Promotion Programs",
+        "Health Screening",
+        "High Risk Behaviors",
+        "Immunizations",
+        "Lifestyle Choices",
+        "Principles of Teaching and Learning",
+        "Self-Care"
+      ]
+    },
+    {
+      "id": "PI",
+      "category": "Psychosocial Integrity",
+      "percentRange": "6-12%",
+      "topics": [
+        "Abuse and Neglect",
+        "Behavioral Interventions",
+        "Chemical and Other Dependencies",
+        "Coping Mechanisms",
+        "Crisis Intervention",
+        "Cultural Awareness/Cultural Influences on Health",
+        "End of Life Care",
+        "Mental Health Concepts",
+        "Sensory/Perceptual Alterations",
+        "Stress Management",
+        "Support Systems"
+      ]
+    },
+    {
+      "id": "PhysI",
+      "category": "Physiological Integrity",
+      "subcategories": [
+        {
+          "id": "BCC",
+          "name": "Basic Care and Comfort",
+          "percentRange": "6-12%",
+          "topics": [
+            "Assistive Devices",
+            "Elimination",
+            "Mobility and Immobility",
+            "Non-Pharmacological Comfort Interventions",
+            "Nutrition and Oral Hydration",
+            "Personal Hygiene",
+            "Rest and Sleep"
+          ]
+        },
+        {
+          "id": "PPT",
+          "name": "Pharmacological and Parenteral Therapies",
+          "percentRange": "12-18%",
+          "topics": [
+            "Adverse Effects/Contraindications/Side Effects/Interactions",
+            "Blood and Blood Products",
+            "Central Venous Access Devices",
+            "Dosage Calculation",
+            "Expected Actions/Outcomes",
+            "Medication Administration",
+            "Pharmacological Pain Management",
+            "Total Parenteral Nutrition"
+          ]
+        },
+        {
+          "id": "RRP",
+          "name": "Reduction of Risk Potential",
+          "percentRange": "9-15%",
+          "topics": [
+            "Changes/Abnormalities in Vital Signs",
+            "Diagnostic Tests",
+            "Laboratory Values",
+            "Potential for Alterations in Body Systems",
+            "Potential for Complications from Surgical Procedures",
+            "System Specific Assessments",
+            "Therapeutic Procedures"
+          ]
+        },
+        {
+          "id": "PA",
+          "name": "Physiological Adaptation",
+          "percentRange": "11-17%",
+          "topics": [
+            "Alterations in Body Systems",
+            "Fluid and Electrolyte Imbalances",
+            "Hemodynamics",
+            "Illness Management",
+            "Medical Emergencies",
+            "Pathophysiology",
+            "Unexpected Response to Therapies"
+          ]
+        }
+      ]
+    }
+  ]
+}

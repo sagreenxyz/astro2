@@ -1,0 +1,30 @@
+---
+/**
+ * CompetencyBadge — displays a single framework alignment badge.
+ * Use inside ContentLayout or any .astro page to surface curriculum metadata.
+ */
+export interface Props {
+  /** The badge label, e.g. "D1", "PCC", "EBP", "CCNE-III" */
+  label: string;
+  /** The tooltip text shown on hover */
+  title: string;
+  /** Visual variant: determines badge colour */
+  variant?: 'aacn' | 'qsen' | 'nclex' | 'accreditation' | 'neutral';
+}
+
+const { label, title: tooltip, variant = 'neutral' } = Astro.props;
+
+const colourMap: Record<string, string> = {
+  aacn: 'badge-primary',
+  qsen: 'badge-secondary',
+  nclex: 'badge-accent',
+  accreditation: 'badge-neutral',
+  neutral: 'badge-outline',
+};
+
+const cls = colourMap[variant] ?? 'badge-outline';
+---
+
+<span class={`badge ${cls} badge-sm font-sans font-medium cursor-default`} title={tooltip}>
+  {label}
+</span>

@@ -1,5 +1,54 @@
 import { defineCollection, z } from 'astro:content';
 
+// ── Nursing curriculum alignment schema (shared) ──────────────────────────
+// AACN Essentials domain IDs: D1–D10
+const aacnEssentialRef = z.enum(['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10']);
+// QSEN competency IDs
+const qsenRef = z.enum(['PCC', 'TC', 'EBP', 'QI', 'S', 'I']);
+// NCLEX-NG Clinical Judgment Model layer IDs
+const nclexLayerRef = z.enum(['RC', 'AC', 'PH', 'GS', 'TA', 'EO']);
+// NCLEX-NG Client Needs category IDs
+const nclexCategoryRef = z.enum([
+  'SECE',
+  'HPM',
+  'PI',
+  'PhysI',
+  'MC',
+  'SIC',
+  'BCC',
+  'PPT',
+  'RRP',
+  'PA',
+]);
+// Accreditation standard IDs (CCNE and ACEN)
+const accreditationRef = z.enum([
+  'CCNE-I',
+  'CCNE-II',
+  'CCNE-III',
+  'CCNE-IV',
+  'ACEN-1',
+  'ACEN-2',
+  'ACEN-3',
+  'ACEN-4',
+  'ACEN-5',
+  'ACEN-6',
+]);
+
+const curriculumAlignment = z.object({
+  /** AACN Essentials (2021) domain references, e.g. ["D1","D5"] */
+  aacnEssentials: z.array(aacnEssentialRef).default([]),
+  /** QSEN competency references, e.g. ["PCC","EBP"] */
+  qsenCompetencies: z.array(qsenRef).default([]),
+  /** NCLEX-NG Clinical Judgment Measurement Model layer references */
+  nclexLayers: z.array(nclexLayerRef).default([]),
+  /** NCLEX-NG Client Needs category references */
+  nclexCategories: z.array(nclexCategoryRef).default([]),
+  /** CCNE / ACEN accreditation standard references */
+  accreditationRefs: z.array(accreditationRef).default([]),
+  /** Explicit learning objectives for this content item */
+  learningObjectives: z.array(z.string()).default([]),
+});
+
 // ── Encyclopedia ────────────────────────────────────────────────────────────
 const encyclopediaCollection = defineCollection({
   type: 'content',
@@ -10,6 +59,8 @@ const encyclopediaCollection = defineCollection({
     publishedAt: z.date(),
     updatedAt: z.date().optional(),
     draft: z.boolean().default(false),
+    /** Optional nursing curriculum alignment metadata */
+    curriculum: curriculumAlignment.optional(),
   }),
 });
 
@@ -24,6 +75,8 @@ const coursesCollection = defineCollection({
     order: z.number().default(0),
     publishedAt: z.date(),
     draft: z.boolean().default(false),
+    /** Optional nursing curriculum alignment metadata */
+    curriculum: curriculumAlignment.optional(),
   }),
 });
 
