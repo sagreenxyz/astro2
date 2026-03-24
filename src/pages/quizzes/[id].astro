@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getCollection('quizzes', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { id: entry.id },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props;
+const quiz = entry.data;
+---
+
+<BaseLayout title={quiz.title} description={quiz.description}>
+  <div class="max-w-2xl">
+    <h1 class="text-3xl font-bold mb-2">{quiz.title}</h1>
+    {quiz.description && <p class="text-base-content/60 font-sans mb-4">{quiz.description}</p>}
+    <div class="flex gap-4 text-sm text-base-content/50 font-sans mb-6">
+      <span>{quiz.questions.length} questions</span>
+      <span>Passing: {quiz.passingScore}%</span>
+      {quiz.timeLimit && <span>Time limit: {quiz.timeLimit} min</span>}
+    </div>
+
+    <form id="quiz-form" class="space-y-6 font-sans">
+      {
+        quiz.questions.map((q, i) => (
+          <fieldset class="card card-border bg-base-100 p-5">
+            <legend class="font-semibold text-base mb-3 px-1">
+              {i + 1}. {q.text}
+            </legend>
+
+            <div class="space-y-2">
+              {q.type === 'multiple-choice' &&
+                q.options?.map((opt) => (
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name={q.id} value={opt} required class="radio radio-sm" />
+                    <span>{opt}</span>
+                  </label>
+                ))}
+
+              {q.type === 'true-false' && (
+                <>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name={q.id} value="True" required class="radio radio-sm" />
+                    <span>True</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name={q.id} value="False" required class="radio radio-sm" />
+                    <span>False</span>
+                  </label>
+                </>
+              )}
+
+              {q.type === 'short-answer' && (
+                <input
+                  type="text"
+                  name={q.id}
+                  placeholder="Your answer"
+                  required
+                  class="input input-bordered w-full max-w-sm"
+                />
+              )}
+            </div>
+          </fieldset>
+        ))
+      }
+
+      <button type="submit" class="btn btn-primary">Submit Quiz</button>
+    </form>
+
+    <div id="quiz-result" hidden class="mt-6">
+      <div class="alert" id="quiz-alert">
+        <p id="quiz-score" class="font-semibold"></p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ quiz }}>
+  const form = document.getElementById('quiz-form');
+  const resultDiv = document.getElementById('quiz-result');
+  const alertEl = document.getElementById('quiz-alert');
+  const scoreP = document.getElementById('quiz-score');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    let correct = 0;
+
+    quiz.questions.forEach((q) => {
+      const userAnswer = (data.get(q.id) ?? '').toString().trim().toLowerCase();
+      const expected = Array.isArray(q.answer)
+        ? q.answer.map((a) => a.toLowerCase())
+        : [q.answer.toLowerCase()];
+      if (expected.includes(userAnswer)) correct++;
+    });
+
+    const pct = Math.round((correct / quiz.questions.length) * 100);
+    const passed = pct >= quiz.passingScore;
+
+    if (scoreP) {
+      scoreP.textContent = `You answered ${correct} of ${quiz.questions.length} correctly (${pct}%). ${passed ? '✅ Passed!' : '❌ Did not pass.'}`;
+    }
+    if (alertEl) {
+      alertEl.className = passed ? 'alert alert-success' : 'alert alert-error';
+    }
+    if (resultDiv) resultDiv.hidden = false;
+    if (form) form.hidden = true;
+  });
+</script>

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "PCC",
+    "name": "Patient-Centered Care",
+    "definition": "Recognize the patient or designee as the source of control and full partner in providing compassionate and coordinated care based on respect for patient's preferences, values, and needs.",
+    "knowledgeExamples": [
+      "Integrate understanding of multiple dimensions of patient-centered care.",
+      "Describe how diverse cultural, ethnic, and social backgrounds function as sources of patient, family, and community values."
+    ],
+    "skillsExamples": [
+      "Elicit patient values, preferences, and expressed needs as part of clinical interview.",
+      "Communicate patient values, preferences, and expressed needs to other members of health care team.",
+      "Provide patient-centered care with sensitivity and respect for the diversity of human experience."
+    ],
+    "attitudesExamples": [
+      "Value seeing health care situations 'through patients' eyes'.",
+      "Respect and encourage individual expression of patient values, preferences, and expressed needs.",
+      "Value active partnership with patients or designated surrogates in planning, implementation, and evaluation of care."
+    ]
+  },
+  {
+    "id": "TC",
+    "name": "Teamwork and Collaboration",
+    "definition": "Function effectively within nursing and inter-professional teams, fostering open communication, mutual respect, and shared decision-making to achieve quality patient care.",
+    "knowledgeExamples": [
+      "Describe own strengths, limitations, and values in functioning as a member of a team.",
+      "Describe scopes of practice and roles of health care team members.",
+      "Describe strategies for identifying and managing overlaps in team member roles and accountabilities."
+    ],
+    "skillsExamples": [
+      "Demonstrate awareness of own strengths and limitations as a team member.",
+      "Initiate plan for self-development as a team member.",
+      "Act with integrity, consistency, and respect for differing views."
+    ],
+    "attitudesExamples": [
+      "Acknowledge own potential to contribute to effective team functioning.",
+      "Appreciate the risks associated with handoffs among providers and across transitions in care."
+    ]
+  },
+  {
+    "id": "EBP",
+    "name": "Evidence-Based Practice",
+    "definition": "Integrate best current evidence with clinical expertise and patient/family preferences and values for delivery of optimal health care.",
+    "knowledgeExamples": [
+      "Demonstrate knowledge of basic scientific methods and processes.",
+      "Describe EBP to include the components of research evidence, clinical expertise and patient/family values.",
+      "Articulate the roles of research and evidence in guiding practice decisions."
+    ],
+    "skillsExamples": [
+      "Participate effectively in appropriate data collection and other research activities.",
+      "Adhere to Institutional Review Board (IRB) guidelines.",
+      "Base individualized care plan on patient values, clinical expertise, and evidence."
+    ],
+    "attitudesExamples": [
+      "Appreciate strengths and weaknesses of scientific bases for practice.",
+      "Value the need for ethical conduct of research and quality improvement.",
+      "Appreciate the importance of regularly reading relevant professional journals."
+    ]
+  },
+  {
+    "id": "QI",
+    "name": "Quality Improvement",
+    "definition": "Use data to monitor the outcomes of care processes and use improvement methods to design and test changes to continuously improve the quality and safety of health care systems.",
+    "knowledgeExamples": [
+      "Describe strategies for learning about the outcomes of care in the setting in which one is engaged in clinical practice.",
+      "Explain the importance of variation and measurement in assessing quality of care.",
+      "Describe approaches for changing processes of care."
+    ],
+    "skillsExamples": [
+      "Seek information about outcomes of care for populations served in care setting.",
+      "Seek information about quality improvement projects in the care setting.",
+      "Use tools (such as flow charts, cause-effect diagrams) to make processes of care explicit."
+    ],
+    "attitudesExamples": [
+      "Appreciate that continuous quality improvement is an essential part of the daily work of all health professionals.",
+      "Value own and others' contributions to outcomes of care in local care settings."
+    ]
+  },
+  {
+    "id": "S",
+    "name": "Safety",
+    "definition": "Minimizes risk of harm to patients and providers through both system effectiveness and individual performance.",
+    "knowledgeExamples": [
+      "Examine human factors and other basic safety design principles as well as commonly used unsafe practices.",
+      "Describe the benefits and limitations of selected safety-enhancing technologies.",
+      "Discuss effective strategies to reduce reliance on memory."
+    ],
+    "skillsExamples": [
+      "Demonstrate effective use of technology and standardized practices that support safety and quality.",
+      "Demonstrate effective use of strategies to reduce risk of harm to self or others.",
+      "Use appropriate strategies to reduce reliance on memory (such as forcing functions, checklists)."
+    ],
+    "attitudesExamples": [
+      "Value the contributions of standardization/reliability to safety.",
+      "Appreciate the cognitive and physical limits of human performance.",
+      "Value own role in preventing errors."
+    ]
+  },
+  {
+    "id": "I",
+    "name": "Informatics",
+    "definition": "Use information and technology to communicate, manage knowledge, mitigate error, and support decision-making.",
+    "knowledgeExamples": [
+      "Explain why information and technology skills are essential for safe patient care.",
+      "Identify essential information that must be available in a common database to support patient care.",
+      "Contrast benefits and limitations of different communication technologies and their impact on safety and quality."
+    ],
+    "skillsExamples": [
+      "Seek education about how information is managed in care settings before providing care.",
+      "Apply technology and information management tools to support safe processes of care.",
+      "Navigate the electronic health record."
+    ],
+    "attitudesExamples": [
+      "Appreciate the necessity for all health professionals to seek lifelong, continuous learning of information technology skills.",
+      "Value technologies that support clinical decision-making, error prevention, and care coordination."
+    ]
+  }
+]

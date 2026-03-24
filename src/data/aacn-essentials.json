@@ -1,0 +1,179 @@
+[
+  {
+    "id": "D1",
+    "domain": "Knowledge for Nursing Practice",
+    "description": "Integrates nursing science with knowledge from ethics, the biophysical, psychosocial, analytical, and organizational sciences as the basis for practice.",
+    "competencies": [
+      {
+        "id": "D1.1",
+        "text": "Demonstrate an understanding of the discipline of nursing and its meta-paradigm."
+      },
+      {
+        "id": "D1.2",
+        "text": "Apply theory and research-based knowledge from nursing, the arts, humanities, and other sciences."
+      },
+      {
+        "id": "D1.3",
+        "text": "Demonstrate clinical reasoning connecting the art and science of nursing."
+      },
+      {
+        "id": "D1.4",
+        "text": "Translate evidence from nursing science and other disciplines to inform practice and make practice decisions."
+      },
+      {
+        "id": "D1.5",
+        "text": "Integrate an understanding of nursing history and the foundational role of nursing in influencing professional development, societal advancement, and healthcare change."
+      }
+    ]
+  },
+  {
+    "id": "D2",
+    "domain": "Person-Centered Care",
+    "description": "Integrates care, knowledge, and skills to work with persons, families, populations, and communities across the lifespan.",
+    "competencies": [
+      { "id": "D2.1", "text": "Engage with the individual in establishing a caring relationship." },
+      { "id": "D2.2", "text": "Communicate effectively with individuals." },
+      { "id": "D2.3", "text": "Integrate assessment skills to inform clinical decision-making." },
+      { "id": "D2.4", "text": "Diagnose actual or potential health problems and needs." },
+      { "id": "D2.5", "text": "Develop a plan of care." },
+      { "id": "D2.6", "text": "Demonstrate accountability for care delivery." },
+      { "id": "D2.7", "text": "Evaluate and revise plan based on individual's response." },
+      { "id": "D2.8", "text": "Promote self-care management." },
+      { "id": "D2.9", "text": "Provide end-of-life care." }
+    ]
+  },
+  {
+    "id": "D3",
+    "domain": "Population Health",
+    "description": "Applies population health concepts to analyze and address health disparities, determinants of health, and advocate for health equity.",
+    "competencies": [
+      { "id": "D3.1", "text": "Manage care of populations." },
+      { "id": "D3.2", "text": "Engage in ethical decision-making regarding population health." },
+      {
+        "id": "D3.3",
+        "text": "Participate in development and implementation of advocacy strategies to address health disparities."
+      },
+      { "id": "D3.4", "text": "Apply epidemiological principles to inform population health." },
+      {
+        "id": "D3.5",
+        "text": "Advance equitable and ethical population-based policies, interventions, and services."
+      },
+      {
+        "id": "D3.6",
+        "text": "Communicate population health data with team members and communities."
+      }
+    ]
+  },
+  {
+    "id": "D4",
+    "domain": "Scholarship for the Nursing Discipline",
+    "description": "Applies principles of evidence-based practice and nursing research to advance the discipline and improve care.",
+    "competencies": [
+      { "id": "D4.1", "text": "Advance the scholarship of nursing." },
+      { "id": "D4.2", "text": "Integrate best evidence into nursing practice." },
+      { "id": "D4.3", "text": "Promote the ethical conduct of research and scholarship." },
+      { "id": "D4.4", "text": "Apply research findings to practice." }
+    ]
+  },
+  {
+    "id": "D5",
+    "domain": "Quality and Safety",
+    "description": "Applies quality improvement and safety science to provide safe, effective, efficient, equitable, timely, and patient-centered care.",
+    "competencies": [
+      { "id": "D5.1", "text": "Apply quality improvement methods." },
+      { "id": "D5.2", "text": "Contribute to a culture of patient safety." },
+      { "id": "D5.3", "text": "Participate in activities that improve patient outcomes." },
+      { "id": "D5.4", "text": "Use quality and safety concepts to guide clinical practice." }
+    ]
+  },
+  {
+    "id": "D6",
+    "domain": "Interprofessional Partnerships",
+    "description": "Collaborates with interprofessional teams to optimize care delivery and healthcare outcomes through teamwork.",
+    "competencies": [
+      { "id": "D6.1", "text": "Communicate effectively within interprofessional teams." },
+      { "id": "D6.2", "text": "Perform effectively in different team roles." },
+      { "id": "D6.3", "text": "Apply teamwork principles to interprofessional collaboration." },
+      {
+        "id": "D6.4",
+        "text": "Demonstrate mutual respect among all members of the healthcare team."
+      }
+    ]
+  },
+  {
+    "id": "D7",
+    "domain": "Systems-Based Practice",
+    "description": "Analyzes complex organizational systems to improve care delivery, reduce errors, and advance health outcomes.",
+    "competencies": [
+      {
+        "id": "D7.1",
+        "text": "Apply knowledge of systems to work effectively across the continuum of care."
+      },
+      {
+        "id": "D7.2",
+        "text": "Incorporate consideration of cost and economic factors in care delivery."
+      },
+      {
+        "id": "D7.3",
+        "text": "Optimize system effectiveness through application of innovation and evidence-based practice."
+      },
+      { "id": "D7.4", "text": "Apply knowledge of regulatory requirements and standards." }
+    ]
+  },
+  {
+    "id": "D8",
+    "domain": "Informatics and Healthcare Technologies",
+    "description": "Uses clinical informatics, data management, and healthcare technologies to coordinate care and improve outcomes.",
+    "competencies": [
+      {
+        "id": "D8.1",
+        "text": "Describe the rationale for the use of technology in providing care."
+      },
+      {
+        "id": "D8.2",
+        "text": "Use technology to document care, communicate, and coordinate care."
+      },
+      {
+        "id": "D8.3",
+        "text": "Use informatics and evidence-based information to support practice decisions."
+      },
+      { "id": "D8.4", "text": "Support consumers in accessing information." }
+    ]
+  },
+  {
+    "id": "D9",
+    "domain": "Professionalism",
+    "description": "Demonstrates professional identity, values, comportment, and accountability consistent with nursing practice.",
+    "competencies": [
+      {
+        "id": "D9.1",
+        "text": "Demonstrate an ethical comportment in one's practice reflective of nursing's mission to society."
+      },
+      { "id": "D9.2", "text": "Employ a participatory approach to nursing care." },
+      {
+        "id": "D9.3",
+        "text": "Demonstrate accountability to the individual, society, and the profession."
+      },
+      { "id": "D9.4", "text": "Comply with relevant laws, regulations, and policies." },
+      { "id": "D9.5", "text": "Demonstrate the professional identity of nursing." },
+      {
+        "id": "D9.6",
+        "text": "Integrate diversity, equity, and inclusion as core to one's professional identity."
+      }
+    ]
+  },
+  {
+    "id": "D10",
+    "domain": "Personal, Professional, and Leadership Development",
+    "description": "Engages in career-long learning and leads within professional nursing practice and the healthcare environment.",
+    "competencies": [
+      { "id": "D10.1", "text": "Demonstrate a commitment to personal health and well-being." },
+      { "id": "D10.2", "text": "Foster a positive work environment." },
+      {
+        "id": "D10.3",
+        "text": "Demonstrate a spirit of inquiry that fosters flexibility and professional maturity."
+      },
+      { "id": "D10.4", "text": "Develop capacity for leadership." }
+    ]
+  }
+]

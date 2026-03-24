@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+// Presentations are authored as individual .astro pages in this directory.
+// Add entries here when you create a new presentation page.
+const presentations = [
+  {
+    title: 'LMS Overview',
+    href: `${base}presentations/lms-overview/`,
+    description: 'A high-level overview of the LMS project, its goals, and architecture.',
+    tags: ['overview', 'lms', 'architecture'],
+    publishedAt: new Date('2026-03-24'),
+  },
+];
+---
+
+<BaseLayout title="Presentations" description="Web-based slide presentations">
+  <h1 class="text-3xl font-bold mb-2">Presentations</h1>
+  <p class="text-base-content/60 font-sans mb-6">
+    Browse web-based presentations. Each presentation is a standalone <code>.astro</code> page.
+  </p>
+
+  {
+    presentations.length === 0 ? (
+      <div class="alert font-sans">
+        <span>
+          No presentations yet. Create <code>.astro</code> files in
+          <code>src/pages/presentations/</code>.
+        </span>
+      </div>
+    ) : (
+      <ul class="space-y-4">
+        {presentations.map((p) => (
+          <li>
+            <a
+              href={p.href}
+              class="card card-border bg-base-100 hover:shadow-md transition-shadow no-underline font-sans block"
+            >
+              <div class="card-body py-4">
+                <h2 class="card-title text-base">{p.title}</h2>
+                {p.description && <p class="text-sm text-base-content/60 mt-1">{p.description}</p>}
+                <div class="flex flex-wrap gap-1 mt-2">
+                  {p.tags.map((tag) => (
+                    <span class="badge badge-outline badge-sm">{tag}</span>
+                  ))}
+                  <span class="text-xs text-base-content/40 ml-auto self-end">
+                    {p.publishedAt.toLocaleDateString()}
+                  </span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getCollection('courses', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<ContentLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  publishedAt={entry.data.publishedAt}
+  tags={entry.data.tags}
+  curriculum={entry.data.curriculum}
+>
+  <div class="mb-4 font-sans">
+    <span class="badge badge-primary capitalize">{entry.data.level}</span>
+  </div>
+  <Content />
+</ContentLayout>
