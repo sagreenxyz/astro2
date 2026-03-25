@@ -1,35 +1,103 @@
 name: Invoke BSN User Agent
-description: Collect information to process by the BSN user agent.
+description: >
+  Submit a note or request for BSN processing, cleanup, and cross-referencing.
+  The agent will clean, structure, and optionally publish the note.
+title: '[BSN]: '
+labels:
+  - bsn
+  - note
+  - submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to explicitly invoke the BSN user agent for note processing.
+        The agent will clean, organize, label, and cross-reference your notes.
+        If confidence is low, the note will be left in draft state with a `needs-review` label.
 
-fields:
   - type: textarea
     id: raw_notes
-    label: Raw Notes
-    required: true
     attributes:
-      rows: 5
+      label: Raw Notes
+      description: Paste the content to be processed by BSN.
+      placeholder: |
+        Enter the notes you want BSN to clean up...
+    validations:
+      required: true
 
-  - type: input
-    id: desired_output
-    label: Desired Output
-    required: true
+  - type: dropdown
+    id: output_mode
+    attributes:
+      label: Desired Output
+      description: What should BSN create?
+      options:
+        - Draft note only
+        - Private note page
+        - Public note page
+    validations:
+      required: true
 
-  - type: input
-    id: privacy
-    label: Privacy Level
-    required: false
+  - type: dropdown
+    id: visibility
+    attributes:
+      label: Visibility
+      description: >
+        Choose where this note should appear.
+        Private and protected notes only appear in the auth-gated Private Notes Hub.
+      options:
+        - public
+        - private
+        - protected
+    validations:
+      required: true
+
+  - type: dropdown
+    id: note_type
+    attributes:
+      label: Note Type
+      description: What kind of note is this?
+      options:
+        - general
+        - meeting
+        - idea
+        - reference
+        - task
+        - research
+    validations:
+      required: true
 
   - type: input
     id: tags
-    label: Tags
-    required: false
+    attributes:
+      label: Tags
+      description: Comma-separated tags for the note.
+      placeholder: 'bsn, notes, workflow'
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Optional external source URL for provenance (must start with https://).
+      placeholder: 'https://example.com/article'
 
   - type: input
     id: related_content
-    label: Related Content
-    required: false
+    attributes:
+      label: Related Internal Pages
+      description: >
+        Comma-separated internal paths or full URLs to pages that should be cross-referenced.
+      placeholder: '/notes/index, /private/notes/'
 
-  - type: boolean
-    id: bsn_processing
-    label: Process with BSN User Agent
-    required: true
+  - type: checkboxes
+    id: processing
+    attributes:
+      label: BSN Actions
+      options:
+        - label: Invoke BSN processing
+          required: true
+        - label: Clean and organize the note
+          required: true
+        - label: Cross-reference internal repository content
+        - label: Keep the result protected/private if visibility is not public
+        - label: Flag for human review if agent confidence is low (recommended)
+        - label: Check for duplicate or near-duplicate notes before publishing

@@ -89,6 +89,31 @@ const notesCollection = defineCollection({
     createdAt: z.date(),
     updatedAt: z.date().optional(),
     draft: z.boolean().default(false),
+    /** Visibility: public notes appear in /notes/, private/protected notes in /private/notes/ */
+    visibility: z.enum(['public', 'private', 'protected']).default('public'),
+    /** Note type for categorization */
+    noteType: z
+      .enum(['meeting', 'idea', 'reference', 'task', 'research', 'general'])
+      .default('general'),
+    /** When true the note needs human review before being considered final */
+    needsReview: z.boolean().default(false),
+    /** Human-readable reason why review is needed (populated by automation) */
+    reviewReason: z.string().optional(),
+    /** GitHub issue URL that originated this note (provenance) */
+    sourceIssue: z.string().url().optional(),
+    /** External source URL for the note content */
+    sourceUrl: z.string().url().optional(),
+    /** Internal or external links related to this note */
+    relatedLinks: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string(),
+        })
+      )
+      .default([]),
+    /** Slug of another note that this may duplicate; set by automation on low-confidence matches */
+    duplicateOf: z.string().optional(),
   }),
 });
 

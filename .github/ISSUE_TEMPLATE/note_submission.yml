@@ -1,0 +1,96 @@
+name: Note Submission
+description: >
+  Submit a raw note to be cleaned, organized, and converted into a structured note draft or page.
+  The automation will set needsReview=true if confidence is low.
+title: '[Note]: '
+labels:
+  - note
+  - submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to submit raw notes. The agent will clean, organize, label,
+        and cross-reference them. If the agent is uncertain it will leave the note as a
+        **draft** and add a `needs-review` label instead of publishing automatically.
+
+  - type: input
+    id: title
+    attributes:
+      label: Suggested Title
+      description: A short title for the note.
+      placeholder: 'Meeting notes on protected content workflow'
+    validations:
+      required: false
+
+  - type: dropdown
+    id: note_type
+    attributes:
+      label: Note Type
+      description: What kind of note is this?
+      options:
+        - general
+        - meeting
+        - idea
+        - reference
+        - task
+        - research
+    validations:
+      required: true
+
+  - type: textarea
+    id: raw_notes
+    attributes:
+      label: Raw Notes
+      description: Paste your raw notes here. The agent will clean and structure them.
+      placeholder: |
+        Enter your raw notes...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: visibility
+    attributes:
+      label: Visibility
+      description: >
+        Choose where this note should appear.
+        Private and protected notes only appear in the auth-gated Private Notes Hub.
+      options:
+        - public
+        - private
+        - protected
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated tags for the note.
+      placeholder: 'astro, notes, workflow'
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Optional external source URL for provenance (must start with https://).
+      placeholder: 'https://example.com/article'
+
+  - type: input
+    id: related_content
+    attributes:
+      label: Related Internal Pages
+      description: >
+        Comma-separated internal paths or full URLs to pages that should be cross-referenced.
+      placeholder: '/notes/project-setup, /encyclopedia/topic'
+
+  - type: checkboxes
+    id: processing
+    attributes:
+      label: Processing Options
+      options:
+        - label: Convert this issue into a note draft
+          required: true
+        - label: Cross-reference related repository content
+        - label: Keep the result private/protected if visibility is not public
+        - label: Flag for human review if agent confidence is low (recommended)

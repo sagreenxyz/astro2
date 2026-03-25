@@ -2,7 +2,10 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const entries = await getCollection('notes', ({ data }) => !data.draft);
+const entries = await getCollection(
+  'notes',
+  ({ data }) => !data.draft && data.visibility === 'public'
+);
 entries.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
 
 const base = import.meta.env.BASE_URL;
@@ -28,7 +31,22 @@ const base = import.meta.env.BASE_URL;
               class="card card-border bg-base-100 hover:shadow-md transition-shadow no-underline font-sans block"
             >
               <div class="card-body py-4">
-                <h2 class="card-title text-base">{entry.data.title}</h2>
+                <div class="flex items-start justify-between gap-2 flex-wrap">
+                  <h2 class="card-title text-base">{entry.data.title}</h2>
+                  <div class="flex gap-1 flex-wrap">
+                    {entry.data.needsReview && (
+                      <span class="badge badge-warning badge-sm font-sans">needs review</span>
+                    )}
+                    {entry.data.duplicateOf && (
+                      <span class="badge badge-error badge-sm font-sans">possible duplicate</span>
+                    )}
+                    {entry.data.noteType !== 'general' && (
+                      <span class="badge badge-ghost badge-sm font-sans">
+                        {entry.data.noteType}
+                      </span>
+                    )}
+                  </div>
+                </div>
                 <time
                   datetime={entry.data.createdAt.toISOString()}
                   class="text-xs text-base-content/40 mt-1"

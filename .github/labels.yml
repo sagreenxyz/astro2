@@ -1,0 +1,42 @@
+# GitHub Labels for the issue-driven note workflow.
+# Apply with: gh label create ... or via a labels sync action.
+
+- name: note
+  color: '0075ca'
+  description: Issue is a note submission
+
+- name: bsn
+  color: '7057ff'
+  description: Issue involves BSN user agent processing
+
+- name: submission
+  color: 'e4e669'
+  description: Raw content submitted for processing
+
+- name: draft
+  color: 'cfd3d7'
+  description: Note is in draft state; not yet published
+
+- name: needs-review
+  color: 'fbca04'
+  description: Agent confidence is low; human review required before publishing
+
+- name: possible-duplicate
+  color: 'd73a4a'
+  description: Note may overlap with an existing note; review and merge or discard
+
+- name: private
+  color: 'b60205'
+  description: Note should remain in the private/protected section
+
+- name: protected
+  color: 'e11d48'
+  description: Note is protected and requires authentication to view
+
+- name: published
+  color: '0e8a16'
+  description: Note has been published and is live on the site
+
+- name: cross-reference
+  color: 'c2e0c6'
+  description: Note should be cross-referenced with related content

@@ -1,10 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
-// AUTH_HASH gates the private section via the shared /login/ page.
-// The login page validates credentials and sets lms_auth='ok' in sessionStorage.
-// No secret needs to be read here — the check happens entirely client-side via /login/.
+// Auth gates via client-side session check below.
 const base = import.meta.env.BASE_URL;
+
+// Count private/protected notes for the hub card (build-time safe — count only, no content exposed)
+const privateNoteCount = (
+  await getCollection(
+    'notes',
+    ({ data }) => !data.draft && (data.visibility === 'private' || data.visibility === 'protected')
+  )
+).length;
+const reviewNeededCount = (
+  await getCollection(
+    'notes',
+    ({ data }) =>
+      !data.draft &&
+      (data.visibility === 'private' || data.visibility === 'protected') &&
+      data.needsReview
+  )
+).length;
 ---
 
 <BaseLayout title="Private Area" description="Access restricted content">
@@ -47,6 +63,28 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
     </article>
+
+    {/* Private Notes Hub card */}
+    <div class="card card-border bg-base-100 mb-6">
+      <div class="card-body">
+        <h2 class="card-title text-lg font-sans">🗒️ Private Notes Hub</h2>
+        <p class="font-sans text-base-content/70 text-sm mb-3">
+          Browse and manage private and protected notes captured via GitHub Issues.
+        </p>
+        <div class="flex items-center gap-3 flex-wrap">
+          <a href={`${base}private/notes/`} class="btn btn-primary btn-sm font-sans">
+            View Private Notes ({privateNoteCount})
+          </a>
+          {
+            reviewNeededCount > 0 && (
+              <span class="badge badge-warning font-sans">
+                {reviewNeededCount} need{reviewNeededCount === 1 ? 's' : ''} review
+              </span>
+            )
+          }
+        </div>
+      </div>
+    </div>
 
     <button id="logout-btn" class="btn btn-outline btn-sm font-sans">Sign Out</button>
   </div>
