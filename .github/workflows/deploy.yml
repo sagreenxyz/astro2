@@ -35,6 +35,11 @@ jobs:
       - name: Build with Astro
         run: npm run build
         env:
+          # AUTH_HASH gates the /private/ section behind a username/password login page.
+          # Generate with: node -e "console.log(require('crypto').createHash('sha256').update('username:password').digest('hex'))"
+          # or: echo -n 'username:password' | sha256sum | awk '{print $1}'
+          # Set AUTH_HASH in Settings → Secrets → Actions.
+          AUTH_HASH: ${{ secrets.AUTH_HASH }}
           # Repository secret used to gate the private section of the site.
           # Set SITE_ACCESS_TOKEN in Settings → Secrets → Actions.
           SITE_ACCESS_TOKEN: ${{ secrets.SITE_ACCESS_TOKEN }}
