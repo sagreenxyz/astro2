@@ -87,7 +87,7 @@ export const CASES: Case[] = [
           chainLink: 'modeOfTransmission',
           points: 10,
           feedback:
-            'Correct! Hand hygiene after glove removal is critical — hands can become contaminated during doffing.',
+            'Correct! Hand hygiene after glove removal is critical — hands can become contaminated during doffing. ABHR is effective against MRSA because MRSA is a vegetative (non-spore-forming) bacterium that alcohol readily kills. Either ABHR or soap and water is appropriate. Note: this is different from C. diff, where spore resistance to alcohol makes soap and water mandatory.',
         },
         {
           id: 'mrsa-a5',
@@ -171,7 +171,7 @@ export const CASES: Case[] = [
               correct: false,
               points: 5,
               feedback:
-                'Partially correct — hand hygiene helps, but the best answer is private room placement.',
+                'ABHR IS effective against MRSA (unlike C. diff, which requires soap and water because spores resist alcohol). However, hand hygiene primarily breaks the "Mode of Transmission" link — it does not directly protect the susceptible roommate. Private room placement is the best action to break the chain at the "Susceptible Host" link.',
             },
           ],
         },

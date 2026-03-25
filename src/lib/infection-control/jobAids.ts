@@ -40,6 +40,7 @@ export const PRECAUTION_GUIDES: PrecautionGuide[] = [
       'Multi-drug resistant organisms (MDROs)',
       'Wound infections with copious drainage',
       'Scabies, RSV (pediatric)',
+      '⚠️ Hand hygiene: ABHR is acceptable for MRSA and VRE (vegetative bacteria); C. diff requires SOAP AND WATER — alcohol does not remove or kill spores',
     ],
   },
   {
