@@ -88,3 +88,4 @@ body:
         - label: Cross-reference related repository content
         - label: Place the result on the protected/private side if visibility requires it
         - label: Flag for manual review before publishing if agent confidence is low
+        - label: Check for duplicate or near-duplicate notes before publishing

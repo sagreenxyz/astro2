@@ -10,19 +10,95 @@ A Learning Management System (LMS) built with [Astro.build](https://astro.build)
 
 ## Content Types
 
-| Section         | Storage                           | URL               |
-| --------------- | --------------------------------- | ----------------- |
-| Encyclopedia    | `src/content/encyclopedia/*.mdx`  | `/encyclopedia/`  |
-| Courses         | `src/content/courses/*.mdx`       | `/courses/`       |
-| Notes           | `src/content/notes/*.mdx`         | `/notes/`         |
-| Presentations   | `src/pages/presentations/*.astro` | `/presentations/` |
-| Quizzes / Exams | `src/content/quizzes/*.json`      | `/quizzes/`       |
-| Glossary        | `src/data/glossary.json`          | `/glossary/`      |
-| Private         | `src/pages/private/`              | `/private/`       |
+| Section         | Storage                           | URL                  |
+| --------------- | --------------------------------- | -------------------- |
+| Encyclopedia    | `src/content/encyclopedia/*.mdx`  | `/encyclopedia/`     |
+| Courses         | `src/content/courses/*.mdx`       | `/courses/`          |
+| Notes (public)  | `src/content/notes/*.mdx`         | `/notes/`            |
+| Notes (private) | `src/content/notes/*.mdx`         | `/private/notes/` 🔒 |
+| Presentations   | `src/pages/presentations/*.astro` | `/presentations/`    |
+| Quizzes / Exams | `src/content/quizzes/*.json`      | `/quizzes/`          |
+| Glossary        | `src/data/glossary.json`          | `/glossary/`         |
+| Private         | `src/pages/private/`              | `/private/`          |
 
 ---
 
-## Project Structure
+## Issue-to-Note Workflow
+
+This repository supports an issue-driven note capture workflow. Open a GitHub Issue, fill in the template, and the BSN agent (or a human) will convert it into a structured `.mdx` note.
+
+### Available Issue Templates
+
+- **Note Submission** (`note_submission.yml`) — submit raw notes to be cleaned, organized, and converted into a note draft or page.
+- **Invoke BSN User Agent** (`bsn-agent.yml`) — explicitly request BSN processing for a note.
+
+### How it works
+
+1. Open a new GitHub Issue and choose one of the note templates.
+2. Fill in the raw notes, visibility preference (`public` / `private` / `protected`), note type, tags, source URL, and related content.
+3. Submit the issue.
+4. The automation / agent will:
+   - Clean and structure the note.
+   - Add labels (`note`, `draft`, `needs-review`, etc.).
+   - Cross-reference related repository content.
+   - Set `sourceIssue` frontmatter to the issue URL for provenance.
+   - Generate a draft note page under `src/content/notes/`.
+   - If visibility is `private` or `protected`, the note only appears in `/private/notes/`.
+   - If agent confidence is low, set `needsReview: true` and add the `needs-review` label instead of publishing.
+
+### Fallback: low-confidence / review-needed path
+
+If the agent is uncertain about a note's content, accuracy, or whether a near-duplicate exists:
+
+- `needsReview: true` is set in the note frontmatter.
+- `reviewReason` describes why review is needed.
+- The note is left as `draft: false` but is **not promoted to public** until a human clears the flag.
+- A warning banner is displayed on the note's page and in the private notes hub.
+- The GitHub Issue is labelled `needs-review`.
+
+To promote a reviewed note:
+
+1. Edit the `.mdx` file: set `needsReview: false`, clear `reviewReason`.
+2. If the note should be public, set `visibility: public`.
+3. Commit and push — the build will validate and publish the note.
+
+### Duplicate / near-duplicate detection
+
+When the agent suspects a note overlaps with an existing one:
+
+- `duplicateOf: 'existing-slug'` is set in the note frontmatter.
+- The note is labelled `possible-duplicate`.
+- An error alert links to the potential duplicate.
+- The submitter should review, then either:
+  - Merge content into the existing note and delete the new one.
+  - Clear `duplicateOf` if the notes are distinct.
+
+### Labels
+
+| Label                | Meaning                                              |
+| -------------------- | ---------------------------------------------------- |
+| `note`               | Issue is a note submission                           |
+| `bsn`                | BSN agent processing requested                       |
+| `submission`         | Raw content submitted for processing                 |
+| `draft`              | Note is in draft state                               |
+| `needs-review`       | Agent confidence low; human review required          |
+| `possible-duplicate` | Note may overlap with an existing note               |
+| `private`            | Note is in the private/protected section             |
+| `published`          | Note has been published and is live                  |
+| `cross-reference`    | Note should be cross-referenced with related content |
+
+> Labels can be synced from `.github/labels.yml` using `gh label` or a labels sync action.
+
+### Private Notes Hub
+
+Private and protected notes are accessible at `/private/notes/` (requires authentication). The hub:
+
+- Lists all notes with `visibility: private` or `visibility: protected`.
+- Shows review-needed and possible-duplicate banners.
+- Supports client-side tag filtering.
+- Links back to the main Private Area.
+
+The main Private Area (`/private/`) shows a summary card with a note count and a link to the hub.
 
 ```
 astro2/
@@ -160,8 +236,14 @@ draft: false
 visibility: public # public | private | protected
 noteType: reference # general | meeting | idea | reference | task | research
 reviewState: published # published | needs-review | draft
-# sourceIssue: 'https://github.com/sagreenxyz/astro2/issues/123'
-# relatedLinks: ['/notes/other-note', '/encyclopedia/topic']
+reviewReason: '' # why review is needed (populated by automation)
+confidence: high # high | medium | low — agent confidence when auto-generated
+sourceIssue: 'https://github.com/sagreenxyz/astro2/issues/42' # GitHub issue provenance
+sourceUrl: 'https://example.com/source' # external source URL
+relatedLinks:
+  - label: 'Related Note'
+    url: '/notes/other-note/'
+duplicateOf: '' # slug of a note this may duplicate (set by automation)
 ---
 
 Note content...
@@ -169,9 +251,9 @@ Note content...
 
 - Notes with `visibility: public` (default) appear in the public `/notes/` index.
 - Notes with `visibility: private` or `visibility: protected` appear only in the auth-gated `/private/notes/` hub.
-- Notes with `reviewState: needs-review` are held as drafts and shown only in the private hub's **Pending Review** section until manually approved.
+- Notes with `reviewState: needs-review` are held and shown only in the private hub's **Pending Review** section until manually approved.
 - Use `sourceIssue` to record the originating GitHub Issue URL (provenance).
-- Use `relatedLinks` to cross-reference internal pages or external resources.
+- Use `relatedLinks` (list of `{label, url}` objects) to cross-reference internal pages or external resources.
 
 You can also submit a note via a GitHub Issue — see [Issue-to-Note Workflow](#issue-to-note-workflow) below.
 

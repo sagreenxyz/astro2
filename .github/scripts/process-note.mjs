@@ -168,9 +168,22 @@ async function main() {
 
   const tagsYaml =
     tags.length > 0 ? `[${tags.map((t) => `'${t.replace(/'/g, "\\'")}'`).join(', ')}]` : '[]';
+
+  // relatedLinks uses {label, url} objects — derive a short label from the URL path
   const relatedLinksYaml =
     relatedLinks.length > 0
-      ? `[${relatedLinks.map((l) => `'${l.replace(/'/g, "\\'")}'`).join(', ')}]`
+      ? '\n' +
+        relatedLinks
+          .map((l) => {
+            const label =
+              l
+                .replace(/^https?:\/\/[^/]+/, '') // strip origin for external URLs
+                .split('/')
+                .filter(Boolean)
+                .pop() || l;
+            return `  - label: '${label.replace(/'/g, "\\'")}'\n    url: '${l.replace(/'/g, "\\'")}'`;
+          })
+          .join('\n')
       : '[]';
 
   const duplicateOfLine = duplicates.length > 0 ? `\nduplicateOf: '${duplicates[0].slug}'` : '';

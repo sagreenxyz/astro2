@@ -97,12 +97,23 @@ const notesCollection = defineCollection({
       .default('general'),
     /** Review state — notes with 'needs-review' are kept as drafts pending confirmation */
     reviewState: z.enum(['draft', 'needs-review', 'published']).default('published'),
-    /** URL of the originating GitHub Issue (provenance) */
-    sourceIssue: z.string().url().optional(),
-    /** Internal or external links related to this note */
-    relatedLinks: z.array(z.string()).default([]),
+    /** Human-readable reason why review is needed (populated by automation) */
+    reviewReason: z.string().optional(),
     /** Agent confidence level when this note was auto-generated */
     confidence: z.enum(['high', 'medium', 'low']).optional(),
+    /** URL of the originating GitHub Issue (provenance) */
+    sourceIssue: z.string().url().optional(),
+    /** External source URL for the note content */
+    sourceUrl: z.string().url().optional(),
+    /** Internal or external links related to this note */
+    relatedLinks: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string(),
+        })
+      )
+      .default([]),
     /** Slug of another note this may duplicate */
     duplicateOf: z.string().optional(),
   }),

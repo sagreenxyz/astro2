@@ -94,3 +94,4 @@ body:
         - label: Cross-reference internal repository content
         - label: Keep the result protected/private if visibility requires it
         - label: Flag for review if the agent confidence is low before publishing
+        - label: Check for duplicate or near-duplicate notes before publishing

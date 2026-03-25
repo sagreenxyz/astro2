@@ -16,7 +16,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const { sourceIssue, relatedLinks, duplicateOf } = entry.data;
+
+const base = import.meta.env.BASE_URL;
+const { reviewReason, duplicateOf, sourceIssue, sourceUrl, relatedLinks } = entry.data;
 ---
 
 <ContentLayout
@@ -24,17 +26,38 @@ const { sourceIssue, relatedLinks, duplicateOf } = entry.data;
   publishedAt={entry.data.createdAt}
   updatedAt={entry.data.updatedAt}
   tags={entry.data.tags}
+  collection="notes"
+  backLabel="Notes"
+  backHref={`${base}notes/`}
 >
   {
     duplicateOf && (
-      <div class="alert alert-warning mb-6 font-sans text-sm">
-        <span>
-          ⚠️ This note may duplicate{' '}
-          <a href={`../../notes/${duplicateOf}/`} class="underline">
-            {duplicateOf}
-          </a>
-          . Consider merging or reviewing both.
-        </span>
+      <div class="alert alert-warning mb-6 font-sans" role="alert">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+          />
+        </svg>
+        <div>
+          <p class="font-semibold">Possible duplicate detected.</p>
+          <p class="text-sm mt-1">
+            This note may overlap with{' '}
+            <a href={`${base}notes/${duplicateOf}/`} class="underline font-medium">
+              {duplicateOf}
+            </a>
+            . Consider merging or reviewing both.
+          </p>
+          {reviewReason && <p class="text-sm mt-1">{reviewReason}</p>}
+        </div>
       </div>
     )
   }
@@ -42,13 +65,34 @@ const { sourceIssue, relatedLinks, duplicateOf } = entry.data;
   <Content />
 
   {
-    (sourceIssue || relatedLinks.length > 0) && (
+    (sourceIssue || sourceUrl || relatedLinks.length > 0) && (
       <aside class="mt-10 pt-6 border-t border-base-300 font-sans text-sm text-base-content/70 space-y-3">
+        <p class="font-semibold uppercase tracking-wide text-xs text-base-content/50">
+          Provenance &amp; Related Links
+        </p>
         {sourceIssue && (
           <p>
             <span class="font-semibold">Source issue:</span>{' '}
-            <a href={sourceIssue} class="underline hover:text-base-content/90 transition-colors">
+            <a
+              href={sourceIssue}
+              class="underline hover:text-base-content/90 transition-colors"
+              target="_blank"
+              rel="noopener"
+            >
               {sourceIssue}
+            </a>
+          </p>
+        )}
+        {sourceUrl && (
+          <p>
+            <span class="font-semibold">Source:</span>{' '}
+            <a
+              href={sourceUrl}
+              class="underline hover:text-base-content/90 transition-colors"
+              target="_blank"
+              rel="noopener"
+            >
+              {sourceUrl}
             </a>
           </p>
         )}
@@ -58,8 +102,13 @@ const { sourceIssue, relatedLinks, duplicateOf } = entry.data;
             <ul class="list-disc list-inside space-y-1">
               {relatedLinks.map((link) => (
                 <li>
-                  <a href={link} class="underline hover:text-base-content/90 transition-colors">
-                    {link}
+                  <a
+                    href={link.url}
+                    class="underline hover:text-base-content/90 transition-colors"
+                    target={link.url.startsWith('http') ? '_blank' : undefined}
+                    rel={link.url.startsWith('http') ? 'noopener' : undefined}
+                  >
+                    {link.label}
                   </a>
                 </li>
               ))}

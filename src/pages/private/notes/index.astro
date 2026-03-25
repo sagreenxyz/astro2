@@ -13,6 +13,9 @@ allNotes.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
 const needsReview = allNotes.filter((e) => e.data.reviewState === 'needs-review' || e.data.draft);
 const published = allNotes.filter((e) => e.data.reviewState === 'published' && !e.data.draft);
 
+// Collect all unique tags for client-side filtering
+const allTags = [...new Set(allNotes.flatMap((n) => n.data.tags))].sort();
+
 const base = import.meta.env.BASE_URL;
 
 function reviewStateBadge(state: string) {
@@ -34,9 +37,36 @@ function reviewStateBadge(state: string) {
       publicly.
     </p>
 
+    {/* Tag filter (client-side) */}
+    {
+      allTags.length > 0 && (
+        <div class="mb-8">
+          <p class="text-xs font-semibold uppercase tracking-wide text-base-content/50 mb-2 font-sans">
+            Filter by tag
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <button
+              class="badge badge-outline badge-sm font-sans cursor-pointer tag-filter badge-primary"
+              data-tag="__all__"
+            >
+              All
+            </button>
+            {allTags.map((tag) => (
+              <button
+                class="badge badge-outline badge-sm font-sans cursor-pointer tag-filter"
+                data-tag={tag}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
     {
       needsReview.length > 0 && (
-        <section class="mb-10">
+        <section class="mb-10" id="needs-review-section">
           <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
             <span class="badge badge-warning badge-sm">needs-review</span> Pending Review
           </h2>
@@ -44,9 +74,9 @@ function reviewStateBadge(state: string) {
             These notes were left in draft/review state because the agent confidence was low or the
             content requires manual verification before publishing.
           </p>
-          <ul class="space-y-4">
+          <ul class="space-y-4" id="needs-review-list">
             {needsReview.map((entry) => (
-              <li>
+              <li data-tags={JSON.stringify(entry.data.tags)}>
                 <a
                   href={`${base}private/notes/${entry.slug}/`}
                   class="card card-border bg-base-100 hover:shadow-md transition-shadow no-underline font-sans block border-warning/40"
@@ -54,9 +84,14 @@ function reviewStateBadge(state: string) {
                   <div class="card-body py-4">
                     <div class="flex items-start justify-between gap-2">
                       <h3 class="card-title text-base">{entry.data.title}</h3>
-                      <span class={`badge badge-sm ${reviewStateBadge(entry.data.reviewState)}`}>
-                        {entry.data.draft ? 'draft' : entry.data.reviewState}
-                      </span>
+                      <div class="flex gap-1 flex-wrap">
+                        <span class={`badge badge-sm ${reviewStateBadge(entry.data.reviewState)}`}>
+                          {entry.data.draft ? 'draft' : entry.data.reviewState}
+                        </span>
+                        {entry.data.duplicateOf && (
+                          <span class="badge badge-error badge-sm">possible duplicate</span>
+                        )}
+                      </div>
                     </div>
                     <time
                       datetime={entry.data.createdAt.toISOString()}
@@ -64,6 +99,9 @@ function reviewStateBadge(state: string) {
                     >
                       {entry.data.createdAt.toLocaleDateString()}
                     </time>
+                    {entry.data.reviewReason && (
+                      <p class="text-xs text-warning mt-1 font-sans">⚠ {entry.data.reviewReason}</p>
+                    )}
                     {entry.data.confidence && (
                       <span class="text-xs text-base-content/50 font-sans">
                         Agent confidence: {entry.data.confidence}
@@ -85,7 +123,7 @@ function reviewStateBadge(state: string) {
       )
     }
 
-    <section>
+    <section id="published-section">
       <h2 class="text-xl font-semibold mb-4">Published Private Notes</h2>
       {
         published.length === 0 ? (
@@ -93,9 +131,9 @@ function reviewStateBadge(state: string) {
             <span>No published private notes yet.</span>
           </div>
         ) : (
-          <ul class="space-y-4">
+          <ul class="space-y-4" id="published-list">
             {published.map((entry) => (
-              <li>
+              <li data-tags={JSON.stringify(entry.data.tags)}>
                 <a
                   href={`${base}private/notes/${entry.slug}/`}
                   class="card card-border bg-base-100 hover:shadow-md transition-shadow no-underline font-sans block"
@@ -103,7 +141,12 @@ function reviewStateBadge(state: string) {
                   <div class="card-body py-4">
                     <div class="flex items-start justify-between gap-2">
                       <h3 class="card-title text-base">{entry.data.title}</h3>
-                      <span class="badge badge-outline badge-sm">{entry.data.visibility}</span>
+                      <div class="flex gap-1 flex-wrap">
+                        <span class="badge badge-outline badge-sm">{entry.data.visibility}</span>
+                        {entry.data.duplicateOf && (
+                          <span class="badge badge-error badge-sm">possible duplicate</span>
+                        )}
+                      </div>
                     </div>
                     <time
                       datetime={entry.data.createdAt.toISOString()}
@@ -157,5 +200,27 @@ function reviewStateBadge(state: string) {
   logoutBtn?.addEventListener('click', () => {
     sessionStorage.removeItem(SESSION_KEY);
     window.location.replace(base + 'login/');
+  });
+
+  // Client-side tag filtering across both sections
+  const filterBtns = document.querySelectorAll('.tag-filter');
+  const noteItems = document.querySelectorAll('#needs-review-list > li, #published-list > li');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.getAttribute('data-tag');
+
+      filterBtns.forEach((b) => b.classList.remove('badge-primary'));
+      btn.classList.add('badge-primary');
+
+      noteItems.forEach((item) => {
+        if (tag === '__all__') {
+          item.style.display = '';
+        } else {
+          const tags = JSON.parse(item.getAttribute('data-tags') || '[]');
+          item.style.display = tags.includes(tag) ? '' : 'none';
+        }
+      });
+    });
   });
 </script>

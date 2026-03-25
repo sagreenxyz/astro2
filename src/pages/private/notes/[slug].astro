@@ -16,7 +16,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const { sourceIssue, relatedLinks, duplicateOf, reviewState, confidence } = entry.data;
+const { sourceIssue, relatedLinks, duplicateOf, reviewState, confidence, reviewReason } =
+  entry.data;
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -49,6 +50,7 @@ const base = import.meta.env.BASE_URL;
           <span>
             ⚠️ This note was flagged as <strong>needs-review</strong> because the agent confidence
             was {confidence ?? 'low'}. Please verify the content before promoting it to published.
+            {reviewReason && <span> Reason: {reviewReason}</span>}
           </span>
         </div>
       )
@@ -87,8 +89,13 @@ const base = import.meta.env.BASE_URL;
               <ul class="list-disc list-inside space-y-1">
                 {relatedLinks.map((link) => (
                   <li>
-                    <a href={link} class="underline hover:text-base-content/90 transition-colors">
-                      {link}
+                    <a
+                      href={link.url}
+                      class="underline hover:text-base-content/90 transition-colors"
+                      target={link.url.startsWith('http') ? '_blank' : undefined}
+                      rel={link.url.startsWith('http') ? 'noopener' : undefined}
+                    >
+                      {link.label}
                     </a>
                   </li>
                 ))}
