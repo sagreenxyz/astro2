@@ -7,10 +7,10 @@
   let activeLevel: PrecautionLevel = $state('standard');
 
   const LEVEL_COLORS: Record<PrecautionLevel, string> = {
-    standard: 'badge-neutral',
-    contact: 'badge-warning',
-    droplet: 'badge-info',
-    airborne: 'badge-error',
+    standard: 'btn-neutral',
+    contact: 'btn-warning',
+    droplet: 'btn-info',
+    airborne: 'btn-error',
   };
 
   const guide = $derived(PRECAUTION_GUIDES.find((g) => g.level === activeLevel));
@@ -22,17 +22,25 @@
     <h3 class="card-title text-base">📋 Quick Reference</h3>
 
     <!-- Tab bar -->
-    <div role="tablist" class="tabs tabs-boxed tabs-sm mb-3">
+    <div role="tablist" class="flex gap-1 mb-3 bg-base-300 rounded-lg p-1">
       <button
         role="tab"
-        class="tab {activeTab === 'precautions' ? 'tab-active' : ''}"
+        aria-selected={activeTab === 'precautions'}
+        class="flex-1 rounded-md px-3 py-1.5 text-sm font-semibold transition-colors
+          {activeTab === 'precautions'
+          ? 'bg-white shadow text-primary'
+          : 'text-base-content/60 hover:text-base-content hover:bg-base-200'}"
         onclick={() => (activeTab = 'precautions')}
       >
         Precautions
       </button>
       <button
         role="tab"
-        class="tab {activeTab === 'chain' ? 'tab-active' : ''}"
+        aria-selected={activeTab === 'chain'}
+        class="flex-1 rounded-md px-3 py-1.5 text-sm font-semibold transition-colors
+          {activeTab === 'chain'
+          ? 'bg-white shadow text-primary'
+          : 'text-base-content/60 hover:text-base-content hover:bg-base-200'}"
         onclick={() => (activeTab = 'chain')}
       >
         Chain of Infection
@@ -41,12 +49,12 @@
 
     <!-- Precautions tab -->
     {#if activeTab === 'precautions'}
-      <div class="flex flex-wrap gap-1 mb-3">
+      <div class="flex flex-wrap gap-1.5 mb-3">
         {#each PRECAUTION_GUIDES as g}
           <button
-            class="badge {LEVEL_COLORS[g.level]} cursor-pointer {activeLevel === g.level
-              ? 'badge-lg font-bold'
-              : 'badge-md'}"
+            class="btn btn-sm {LEVEL_COLORS[g.level]} {activeLevel === g.level
+              ? 'btn-active ring-2 ring-offset-1 ring-current'
+              : 'btn-outline'}"
             onclick={() => (activeLevel = g.level)}
           >
             {g.label}
