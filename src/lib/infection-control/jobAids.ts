@@ -6,9 +6,18 @@ export const PRECAUTION_GUIDES: PrecautionGuide[] = [
   {
     level: 'standard',
     label: 'Standard Precautions',
-    ppe: ['Gloves (when touching blood/body fluids)', 'Gown (if splash risk)', 'Mask/eye protection (if splash risk)'],
+    ppe: [
+      'Gloves (when touching blood/body fluids)',
+      'Gown (if splash risk)',
+      'Mask/eye protection (if splash risk)',
+    ],
     roomRequirements: ['Any room type', 'Standard hand hygiene'],
-    equipment: ['Soap and water or ABHR', 'Gloves', 'Gown (if needed)', 'Mask/face shield (if splash risk)'],
+    equipment: [
+      'Soap and water or ABHR',
+      'Gloves',
+      'Gown (if needed)',
+      'Mask/face shield (if splash risk)',
+    ],
     when: [
       'All patient care — every patient, every time',
       'Contact with blood, body fluids, non-intact skin, mucous membranes',
@@ -67,7 +76,12 @@ export const PRECAUTION_GUIDES: PrecautionGuide[] = [
       'Patient masked during transport',
     ],
     equipment: ['Fit-tested N95 or PAPR', 'AIIR with anteroom preferred'],
-    when: ['Tuberculosis (TB)', 'Measles (rubeola)', 'Chickenpox / disseminated zoster', 'COVID-19 during AGPs'],
+    when: [
+      'Tuberculosis (TB)',
+      'Measles (rubeola)',
+      'Chickenpox / disseminated zoster',
+      'COVID-19 during AGPs',
+    ],
   },
 ];
 
@@ -83,7 +97,8 @@ export const CHAIN_LINKS: Record<keyof import('./types').ChainOfInfection, Chain
   },
   reservoir: {
     name: 'Reservoir',
-    description: 'The habitat where the pathogen lives, grows, and multiplies (human, animal, environment).',
+    description:
+      'The habitat where the pathogen lives, grows, and multiplies (human, animal, environment).',
     nursingInterventions: [
       'Identify and treat infected/colonized individuals',
       'Clean and disinfect environmental surfaces',
@@ -92,7 +107,8 @@ export const CHAIN_LINKS: Record<keyof import('./types').ChainOfInfection, Chain
   },
   portalOfExit: {
     name: 'Portal of Exit',
-    description: 'The route by which the pathogen leaves the reservoir (respiratory tract, GI tract, wounds, etc.).',
+    description:
+      'The route by which the pathogen leaves the reservoir (respiratory tract, GI tract, wounds, etc.).',
     nursingInterventions: [
       'Cover coughs and sneezes (respiratory hygiene)',
       'Handle wound drainage with gloves and gown',
@@ -110,7 +126,8 @@ export const CHAIN_LINKS: Record<keyof import('./types').ChainOfInfection, Chain
   },
   portalOfEntry: {
     name: 'Portal of Entry',
-    description: 'The route by which the pathogen enters the new host (respiratory, mucous membranes, broken skin, etc.).',
+    description:
+      'The route by which the pathogen enters the new host (respiratory, mucous membranes, broken skin, etc.).',
     nursingInterventions: [
       'Maintain intact skin and mucous membrane barriers',
       'Use aseptic technique for invasive procedures',

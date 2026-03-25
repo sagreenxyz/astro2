@@ -337,10 +337,10 @@ This repository supports an issue-driven note capture workflow. Submit raw notes
 
 ### Available Issue Templates
 
-| Template                  | Purpose                                                      |
-| ------------------------- | ------------------------------------------------------------ |
-| **Note Submission**              | Submit raw notes for conversion into a structured note draft                                         |
-| **Invoke BSN Curriculum Agent**  | Create, update, or align nursing content with AACN Essentials, QSEN, NCLEX-NG, and CCNE/ACEN standards |
+| Template                        | Purpose                                                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Note Submission**             | Submit raw notes for conversion into a structured note draft                                           |
+| **Invoke BSN Curriculum Agent** | Create, update, or align nursing content with AACN Essentials, QSEN, NCLEX-NG, and CCNE/ACEN standards |
 
 Open a new issue at: `https://github.com/sagreenxyz/astro2/issues/new/choose`
 

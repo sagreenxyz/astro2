@@ -106,7 +106,15 @@ export interface ModeAContent {
 
 // ─── Mode B: Step-by-step Room Workflow ─────────────────────────────────────
 
-export type WorkflowPhase = 'before_entry' | 'donning' | 'entering' | 'care' | 'before_exit' | 'doffing' | 'exiting' | 'cleaning';
+export type WorkflowPhase =
+  | 'before_entry'
+  | 'donning'
+  | 'entering'
+  | 'care'
+  | 'before_exit'
+  | 'doffing'
+  | 'exiting'
+  | 'cleaning';
 
 export interface WorkflowStepOption {
   id: string;

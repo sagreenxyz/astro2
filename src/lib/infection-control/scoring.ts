@@ -1,11 +1,6 @@
 // ─── Infection-Control Scoring Engine ───────────────────────────────────────
 
-import type {
-  Case,
-  ModeAResult,
-  ModeBResult,
-  PrecautionLevel,
-} from './types';
+import type { Case, ModeAResult, ModeBResult, PrecautionLevel } from './types';
 
 // ── Mode A Scoring ───────────────────────────────────────────────────────────
 
@@ -20,7 +15,7 @@ export interface ModeAInput {
 export function scoreModeA(input: ModeAInput, c: Case): ModeAResult {
   // Precaution points
   const precautionOption = c.modeA.precautionOptions.find(
-    (o) => o.level === input.precautionChoice,
+    (o) => o.level === input.precautionChoice
   );
   const precautionPoints = precautionOption?.points ?? 0;
 
@@ -143,7 +138,7 @@ export function getGradeLabel(grade: PerformanceGrade): string {
 export function getBadgeForCase(
   caseId: string,
   modeAPercentage: number,
-  modeBPercentage: number,
+  modeBPercentage: number
 ): string | null {
   const avg = (modeAPercentage + modeBPercentage) / 2;
   if (avg >= 90) return `ic-master-${caseId}`;
