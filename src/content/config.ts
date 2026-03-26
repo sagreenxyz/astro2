@@ -174,6 +174,33 @@ const changelogCollection = defineCollection({
   }),
 });
 
+// ── Pharmacology ─────────────────────────────────────────────────────────────
+const pharmacologyCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    genericName: z.string(),
+    brandNames: z.array(z.string()).default([]),
+    drugClass: z.string(),
+    subClass: z.string().optional(),
+    mechanismOfAction: z.string(),
+    indications: z.array(z.string()).default([]),
+    contraindications: z.array(z.string()).default([]),
+    sideEffects: z
+      .object({
+        common: z.array(z.string()).default([]),
+        serious: z.array(z.string()).default([]),
+      })
+      .optional(),
+    nursingConsiderations: z.array(z.string()).default([]),
+    patientTeaching: z.array(z.string()).default([]),
+    routes: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    publishedAt: z.date(),
+  }),
+});
+
 export const collections = {
   encyclopedia: encyclopediaCollection,
   courses: coursesCollection,
@@ -181,4 +208,5 @@ export const collections = {
   quizzes: quizzesCollection,
   paths: pathsCollection,
   changelog: changelogCollection,
+  pharmacology: pharmacologyCollection,
 };
