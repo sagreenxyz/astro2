@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+import PrivateGuard from '../../../components/auth/PrivateGuard.svelte';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const entries = await getCollection(
@@ -27,7 +28,7 @@ const base = import.meta.env.BASE_URL;
   updatedAt={entry.data.updatedAt}
   tags={entry.data.tags}
 >
-  <div id="private-note-content" hidden>
+  <PrivateGuard base={base} client:load>
     <!-- Visibility & review state banner -->
     <div class="flex flex-wrap gap-2 mb-6">
       <span class="badge badge-outline badge-sm font-sans">🔒 {entry.data.visibility}</span>
@@ -109,22 +110,5 @@ const base = import.meta.env.BASE_URL;
     <div class="mt-8 pt-4 border-t border-base-300">
       <a href={`${base}private/notes/`} class="btn btn-ghost btn-sm font-sans"> ← Private Notes </a>
     </div>
-  </div>
+  </PrivateGuard>
 </ContentLayout>
-
-<script define:vars={{ base }}>
-  const SESSION_KEY = 'lms_auth';
-  const REDIRECT_KEY = 'lms_redirect';
-
-  const content = document.getElementById('private-note-content');
-
-  if (sessionStorage.getItem(SESSION_KEY) === 'ok') {
-    if (content) content.hidden = false;
-  } else {
-    sessionStorage.setItem(
-      REDIRECT_KEY,
-      window.location.pathname + window.location.search + window.location.hash
-    );
-    window.location.replace(base + 'login/');
-  }
-</script>

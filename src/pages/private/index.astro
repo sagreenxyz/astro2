@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import PrivateGuard from '../../components/auth/PrivateGuard.svelte';
 
-// Auth gates via client-side session check below.
 const base = import.meta.env.BASE_URL;
 
 // Count private/protected notes for the hub card (build-time safe — count only, no content exposed)
@@ -24,7 +24,7 @@ const reviewNeededCount = (
 ---
 
 <BaseLayout title="Private Area" description="Access restricted content">
-  <div id="private-content" hidden>
+  <PrivateGuard base={base} client:load>
     <h1 class="text-3xl font-bold mb-4">Private Area</h1>
     <p class="text-base-content/60 font-sans mb-6">
       You are authenticated. Below is a test note for verifying the login feature.
@@ -41,9 +41,9 @@ const reviewNeededCount = (
             <span class="badge badge-outline badge-sm">auth</span>
           </div>
           <p class="font-sans text-base-content/80">
-            If you can read this note, your login was successful. This page is protected by
-            session-based authentication — access is only granted after supplying the correct
-            credentials on the <strong>Sign In</strong> page.
+            If you can read this note, your login was successful. This page is protected by Supabase
+            Auth — access is only granted after signing in on the
+            <strong>Sign In</strong> page.
           </p>
           <h3 class="font-semibold mt-4 mb-2 font-sans">What to verify</h3>
           <ul class="font-sans list-disc list-inside space-y-1 text-base-content/80">
@@ -85,30 +85,5 @@ const reviewNeededCount = (
         </div>
       </div>
     </div>
-
-    <button id="logout-btn" class="btn btn-outline btn-sm font-sans">Sign Out</button>
-  </div>
+  </PrivateGuard>
 </BaseLayout>
-
-<script define:vars={{ base }}>
-  const SESSION_KEY = 'lms_auth';
-  const REDIRECT_KEY = 'lms_redirect';
-
-  const privateContent = document.getElementById('private-content');
-  const logoutBtn = document.getElementById('logout-btn');
-
-  if (sessionStorage.getItem(SESSION_KEY) === 'ok') {
-    if (privateContent) privateContent.hidden = false;
-  } else {
-    sessionStorage.setItem(
-      REDIRECT_KEY,
-      window.location.pathname + window.location.search + window.location.hash
-    );
-    window.location.replace(base + 'login/');
-  }
-
-  logoutBtn?.addEventListener('click', () => {
-    sessionStorage.removeItem(SESSION_KEY);
-    window.location.replace(base + 'login/');
-  });
-</script>

@@ -447,15 +447,21 @@ Both are displayed at the bottom of note detail pages as a provenance and cross-
 
 #### 1. Authentication / Private Section
 
-The current private section uses a build-time token from `SITE_ACCESS_TOKEN`. For a more robust system:
+The private section now uses **Supabase Auth** for client-side authentication. The protection is enforced in the browser via the `PrivateGuard.svelte` island — private page content is still present in the built static HTML but is hidden until a valid Supabase session is detected. This is a significant improvement over the previous build-time token approach.
 
-| Option                    | Pros                                     | Cons                               |
-| ------------------------- | ---------------------------------------- | ---------------------------------- |
-| **Supabase Auth**         | Full auth, free tier, row-level security | Requires external service          |
-| **Auth0 / Clerk**         | Polished UX, free tier                   | External service, cost at scale    |
-| **Netlify Identity**      | Tight Astro integration                  | Requires moving to Netlify hosting |
-| **Build-time exclusion**  | Simple, current approach                 | Content visible in repo source     |
-| **Separate private repo** | True separation                          | Operational complexity             |
+**Setup steps:**
+
+1. Create a free project at [supabase.com](https://supabase.com)
+2. Go to **Project Settings → API** and copy your **Project URL** and **anon public** key
+3. Add two repository secrets under **Settings → Secrets → Actions**:
+   - `PUBLIC_SUPABASE_URL` — your Supabase project URL (e.g. `https://abc123.supabase.co`)
+   - `PUBLIC_SUPABASE_ANON_KEY` — your Supabase anon key
+4. In your Supabase project, go to **Authentication → Users** and create a user with email + password
+5. For local development, copy `.env.example` to `.env` and fill in the two values
+
+> **Limitation:** Because this is a static site hosted on GitHub Pages, authentication is enforced client-side only. The raw HTML for private pages is still present in the built output — do not use this to protect truly sensitive data. For full server-side protection, a hosting platform that supports SSR (e.g. Vercel, Netlify, Cloudflare Pages) would be required.
+
+> **Backward compatibility:** The `SITE_ACCESS_TOKEN` secret is still present in the deploy workflow and `.env.example`. It does not affect the new Supabase auth flow and can be removed once the new auth is confirmed working.
 
 #### 2. Search
 
@@ -475,8 +481,9 @@ Deployment is automated via GitHub Actions (`.github/workflows/deploy.yml`) on e
 
 1. Go to **Settings → Pages** in your GitHub repository
 2. Set **Source** to **GitHub Actions**
-3. Add `SITE_ACCESS_TOKEN` under **Settings → Secrets → Actions**
-4. Push to `main` — the site will be built and deployed automatically
+3. Add `SITE_ACCESS_TOKEN` under **Settings → Secrets → Actions** (retained for backward compatibility)
+4. Add `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` under **Settings → Secrets → Actions** for the Supabase Auth integration
+5. Push to `main` — the site will be built and deployed automatically
 
 ---
 

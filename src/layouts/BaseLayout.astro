@@ -183,12 +183,12 @@ const privateLink = { href: `${base}private/`, label: 'Private' };
   </body>
 </html>
 
-<script define:vars={{ base }}>
-  const SESSION_KEY = 'lms_auth';
+<script>
+  import { supabase } from '../lib/supabase';
 
-  function applyAuthState() {
-    const loggedIn = sessionStorage.getItem(SESSION_KEY) === 'ok';
+  const base = import.meta.env.BASE_URL;
 
+  function applyAuthState(loggedIn: boolean) {
     // Desktop
     const signinDesktop = document.getElementById('nav-signin-desktop');
     const signoutDesktop = document.getElementById('nav-signout-desktop');
@@ -218,12 +218,20 @@ const privateLink = { href: `${base}private/`, label: 'Private' };
     }
   }
 
-  function handleSignOut() {
-    sessionStorage.removeItem(SESSION_KEY);
+  async function handleSignOut() {
+    await supabase.auth.signOut();
     window.location.replace(base + 'login/');
   }
 
-  applyAuthState();
+  // Initial auth state
+  supabase.auth.getSession().then(({ data }) => {
+    applyAuthState(!!data.session);
+  });
+
+  // Keep nav in sync when auth state changes (e.g. token refresh, sign-out in another tab)
+  supabase.auth.onAuthStateChange((_event, session) => {
+    applyAuthState(!!session);
+  });
 
   document.getElementById('nav-signout-desktop')?.addEventListener('click', handleSignOut);
   document.getElementById('nav-signout-mobile-btn')?.addEventListener('click', handleSignOut);

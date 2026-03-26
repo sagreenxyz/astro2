@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PrivateGuard from '../../../components/auth/PrivateGuard.svelte';
 
 // Only private and protected notes appear here; draft and needs-review notes are listed
 // for review but visually distinguished so the authenticated user can act on them.
@@ -26,7 +27,7 @@ function reviewStateBadge(state: string) {
 ---
 
 <BaseLayout title="Private Notes" description="Private and protected notes hub">
-  <div id="private-notes-content" hidden>
+  <PrivateGuard base={base} client:load>
     <div class="flex items-center gap-3 mb-2">
       <h1 class="text-3xl font-bold">Private Notes</h1>
       <span class="badge badge-outline badge-sm font-sans">🔒 protected</span>
@@ -175,33 +176,11 @@ function reviewStateBadge(state: string) {
 
     <div class="mt-10 pt-6 border-t border-base-300 flex gap-3">
       <a href={`${base}private/`} class="btn btn-ghost btn-sm font-sans">← Private Home</a>
-      <button id="logout-btn" class="btn btn-outline btn-sm font-sans">Sign Out</button>
     </div>
-  </div>
+  </PrivateGuard>
 </BaseLayout>
 
-<script define:vars={{ base }}>
-  const SESSION_KEY = 'lms_auth';
-  const REDIRECT_KEY = 'lms_redirect';
-
-  const content = document.getElementById('private-notes-content');
-  const logoutBtn = document.getElementById('logout-btn');
-
-  if (sessionStorage.getItem(SESSION_KEY) === 'ok') {
-    if (content) content.hidden = false;
-  } else {
-    sessionStorage.setItem(
-      REDIRECT_KEY,
-      window.location.pathname + window.location.search + window.location.hash
-    );
-    window.location.replace(base + 'login/');
-  }
-
-  logoutBtn?.addEventListener('click', () => {
-    sessionStorage.removeItem(SESSION_KEY);
-    window.location.replace(base + 'login/');
-  });
-
+<script>
   // Client-side tag filtering across both sections
   const filterBtns = document.querySelectorAll('.tag-filter');
   const noteItems = document.querySelectorAll('#needs-review-list > li, #published-list > li');
@@ -215,10 +194,10 @@ function reviewStateBadge(state: string) {
 
       noteItems.forEach((item) => {
         if (tag === '__all__') {
-          item.style.display = '';
+          (item as HTMLElement).style.display = '';
         } else {
           const tags = JSON.parse(item.getAttribute('data-tags') || '[]');
-          item.style.display = tags.includes(tag) ? '' : 'none';
+          (item as HTMLElement).style.display = tags.includes(tag) ? '' : 'none';
         }
       });
     });
