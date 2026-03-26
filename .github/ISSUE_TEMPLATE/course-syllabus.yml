@@ -1,0 +1,109 @@
+name: Course Syllabus
+description: Generate a complete BSN course syllabus including course description, outcomes, schedule, policies, and grading breakdown.
+title: '[Syllabus]: '
+labels:
+  - bsn
+  - syllabus
+  - course
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request a **course syllabus** for a BSN course. The BSN Curriculum Agent
+        will produce a complete syllabus including course description, student learning outcomes,
+        weekly schedule, grading breakdown, and course policies aligned to AACN Essentials (2021),
+        NCLEX-NG, and QSEN competencies.
+
+  - type: input
+    id: course_name
+    attributes:
+      label: Course Name *
+      description: The full name of the course.
+      placeholder: 'e.g., NUR 301 — Medical-Surgical Nursing I'
+    validations:
+      required: true
+
+  - type: input
+    id: credit_hours
+    attributes:
+      label: Credit Hours
+      description: Total credit hours (include lecture, lab, and clinical hours if applicable).
+      placeholder: 'e.g., 4 credits (3 lecture + 1 lab)'
+
+  - type: dropdown
+    id: course_level
+    attributes:
+      label: Course Level *
+      description: Academic level of the learners.
+      options:
+        - First year (pre-nursing / foundational)
+        - Second year (fundamentals)
+        - Third year (intermediate clinical)
+        - Fourth year (advanced clinical / capstone)
+    validations:
+      required: true
+
+  - type: input
+    id: semester
+    attributes:
+      label: Semester / Term
+      description: When is this course offered?
+      placeholder: 'e.g., Fall 2025, Spring 2026'
+
+  - type: textarea
+    id: course_description
+    attributes:
+      label: Course Description *
+      description: Provide a brief description of the course focus, content areas, and learner population.
+      placeholder: |
+        e.g., This course introduces BSN students to medical-surgical nursing care of adult
+        patients with common acute and chronic conditions. Emphasis is placed on clinical
+        judgment, evidence-based practice, and interprofessional collaboration.
+    validations:
+      required: true
+
+  - type: textarea
+    id: topics
+    attributes:
+      label: Major Topics / Weekly Schedule Outline
+      description: List the major content units or weekly topics to be covered in the course.
+      placeholder: |
+        Week 1 — Introduction to medical-surgical nursing and the NCLEX-NG CJMM
+        Week 2 — Fluid and electrolyte balance
+        Week 3 — Acid-base balance
+        Week 4 — Perioperative nursing
+        ...
+
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: Desired Student Learning Outcomes
+      description: >
+        List the course-level student learning outcomes. If left blank, the agent will
+        generate outcomes appropriate for the course description and level.
+      placeholder: |
+        1. Apply the nursing process to plan safe, patient-centered care for adults with acute conditions.
+        2. Analyze clinical data to recognize and respond to changes in patient status.
+        3. Demonstrate effective interprofessional communication using SBAR.
+
+  - type: textarea
+    id: assessments
+    attributes:
+      label: Assessments and Grading Breakdown
+      description: Describe the assessments used in the course and their approximate weight.
+      placeholder: |
+        e.g.,
+        - Exams (3) — 45%
+        - NCLEX-style quizzes — 15%
+        - Clinical skills lab — 20%
+        - Case study assignment — 10%
+        - Participation / ATI — 10%
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on policies, institutional requirements, or accreditation alignment.
+      placeholder: |
+        e.g., Include an academic integrity policy aligned to ANA Code of Ethics.
+        Add a late work policy. Align course outcomes to AACN Essentials Domains 1, 6, and 9.

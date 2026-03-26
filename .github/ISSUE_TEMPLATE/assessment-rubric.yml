@@ -1,0 +1,93 @@
+name: Assessment Rubric
+description: Generate a detailed grading rubric for a clinical skills lab, written assignment, or group project.
+title: '[Rubric]: '
+labels:
+  - bsn
+  - rubric
+  - assessment
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request an **assessment rubric** for a BSN course assignment,
+        clinical skills lab, or group project. The BSN Curriculum Agent will produce a
+        rubric with specific, measurable criteria and 3–4 performance levels rendered
+        via the `<RubricGrid />` component.
+
+  - type: input
+    id: title
+    attributes:
+      label: Assignment or Assessment Title *
+      description: The name of the assignment or skill being assessed.
+      placeholder: 'e.g., IV Catheter Insertion Skills Lab, Care Plan Written Assignment'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course this rubric belongs to.
+      placeholder: 'e.g., NUR 215 — Fundamentals of Nursing Practice'
+
+  - type: dropdown
+    id: assessment_type
+    attributes:
+      label: Assessment Type *
+      description: What type of work is being assessed?
+      options:
+        - Clinical skills lab performance
+        - Written assignment (care plan, paper, reflection)
+        - Group or team project
+        - Simulation performance
+        - Oral presentation
+        - Case study response
+        - Clinical reasoning / NCLEX-style response
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: total_points
+    attributes:
+      label: Total Points
+      description: The total point value of this assessment.
+      placeholder: 'e.g., 100, 50, 200'
+
+  - type: dropdown
+    id: performance_levels
+    attributes:
+      label: Number of Performance Levels
+      description: How many performance tiers should the rubric include?
+      options:
+        - '3 (e.g., Beginning / Developing / Proficient)'
+        - '4 (e.g., Beginning / Developing / Proficient / Exemplary)'
+    validations:
+      required: false
+
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Rubric Criteria *
+      description: >
+        List the specific skills, behaviors, or competencies to be evaluated.
+        If left blank, the agent will generate criteria appropriate for the assessment type.
+      placeholder: |
+        e.g.,
+        - Hand hygiene and aseptic technique
+        - Site selection and skin preparation
+        - Catheter insertion technique
+        - Securing the catheter and dressing application
+        - Patient communication and education
+        - Documentation accuracy
+    validations:
+      required: false
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on point distribution, alignment to course outcomes, or accreditation standards.
+      placeholder: |
+        e.g., Weight clinical safety criteria at 40% of total points. Align to AACN
+        Essential 9 (Professionalism). Include a column for self-assessment.

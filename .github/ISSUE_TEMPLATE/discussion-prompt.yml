@@ -1,0 +1,89 @@
+name: Discussion Prompt
+description: Generate reflective discussion prompts tied to clinical experiences, readings, or case-based learning.
+title: '[Discussion Prompt]: '
+labels:
+  - bsn
+  - discussion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request **discussion prompts** for a BSN course. The BSN Curriculum Agent
+        will generate reflective prompts aligned to course learning objectives, Bloom's taxonomy,
+        and QSEN competencies to support active learning and professional identity formation.
+
+  - type: input
+    id: title
+    attributes:
+      label: Discussion Topic or Title *
+      description: A descriptive title or topic for the discussion activity.
+      placeholder: 'e.g., Ethical Dilemmas in End-of-Life Care'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course this discussion will be used in.
+      placeholder: 'e.g., NUR 420 — Nursing Ethics and Professional Practice'
+
+  - type: dropdown
+    id: discussion_type
+    attributes:
+      label: Discussion Type *
+      description: What kind of discussion activity is this?
+      options:
+        - Online discussion board (asynchronous)
+        - In-class Socratic seminar
+        - Post-clinical reflection
+        - Post-simulation debrief
+        - Reading-based discussion
+        - Case-based discussion
+        - Guest speaker reflection
+    validations:
+      required: true
+
+  - type: input
+    id: quantity
+    attributes:
+      label: Number of Prompts
+      description: How many discussion prompts do you need?
+      placeholder: 'e.g., 3, 5'
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Clinical Context, Reading, or Scenario *
+      description: Describe the clinical experience, assigned reading, case, or topic that the prompts should be tied to.
+      placeholder: |
+        e.g., Students completed a clinical rotation in a long-term care facility and
+        observed end-of-life care. The assigned reading was the ANA Position Statement
+        on Nursing Care and Do-Not-Resuscitate Decisions.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: bloom_level
+    attributes:
+      label: Primary Bloom's Taxonomy Level
+      description: The cognitive level the prompts should target.
+      options:
+        - Remember
+        - Understand
+        - Apply
+        - Analyze
+        - Evaluate
+        - Create
+        - Mixed
+    validations:
+      required: false
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on prompt format, required response length, peer reply expectations, or QSEN alignment.
+      placeholder: |
+        e.g., Include a peer-response requirement. Align prompts to QSEN Patient-Centered
+        Care competency. Prompts should require students to draw on personal clinical experience.

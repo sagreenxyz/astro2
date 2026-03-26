@@ -1,0 +1,88 @@
+name: Lesson Plan
+description: Request a weekly or unit-level lesson plan with objectives, activities, and assessment checkpoints.
+title: '[Lesson Plan]: '
+labels:
+  - bsn
+  - lesson-plan
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request a **lesson plan** for a BSN course unit or week.
+        The BSN Curriculum Agent will generate a structured plan with learning objectives
+        aligned to Bloom's taxonomy, in-class activities, and formative assessment checkpoints.
+
+  - type: input
+    id: title
+    attributes:
+      label: Lesson / Unit Title *
+      description: A descriptive title for the lesson or unit.
+      placeholder: 'e.g., Week 4 — Fluid and Electrolyte Balance'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number *
+      description: The course this lesson belongs to.
+      placeholder: 'e.g., NUR 301 — Medical-Surgical Nursing I'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: course_level
+    attributes:
+      label: Course Level *
+      description: Academic level of the learners.
+      options:
+        - First year (pre-nursing / foundational)
+        - Second year (fundamentals)
+        - Third year (intermediate clinical)
+        - Fourth year (advanced clinical / capstone)
+    validations:
+      required: true
+
+  - type: input
+    id: duration
+    attributes:
+      label: Lesson Duration
+      description: How much time does this lesson span?
+      placeholder: 'e.g., 1 week, 2 class sessions (75 min each)'
+
+  - type: textarea
+    id: topics
+    attributes:
+      label: Key Topics *
+      description: List the main topics or concepts to be covered in this lesson.
+      placeholder: |
+        - Isotonic, hypotonic, and hypertonic fluid imbalances
+        - Electrolyte abnormalities: sodium, potassium, calcium
+        - IV fluid selection and nursing implications
+    validations:
+      required: true
+
+  - type: textarea
+    id: bloom_focus
+    attributes:
+      label: Bloom's Taxonomy Focus
+      description: Which cognitive levels should the objectives target? (Select all that apply.)
+      placeholder: 'e.g., Remember, Understand, Apply, Analyze'
+
+  - type: textarea
+    id: activities
+    attributes:
+      label: Preferred Learning Activities
+      description: Describe any specific activities, formats, or modalities you want included.
+      placeholder: |
+        e.g., Case study discussion, skills lab, NCLEX-style practice questions,
+        group reflection, simulation debrief
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance, constraints, or alignment requirements.
+      placeholder: |
+        e.g., Align objectives to AACN Essential 6 (Interprofessional Partnerships).
+        Include a formative quiz at the end of each class session.

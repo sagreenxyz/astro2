@@ -33,9 +33,21 @@ body:
       description: What type of LMS content should be created or updated?
       options:
         - Course module
+        - Course syllabus
+        - Curriculum map
         - Encyclopedia entry
+        - Lesson plan
+        - Learning objectives
+        - Lecture outline / reading guide
         - Reference note
+        - NCLEX-style quiz questions
         - Quiz / Assessment
+        - Case study / clinical scenario
+        - Unfolding case study
+        - Simulation lab instructions
+        - Assessment rubric
+        - Discussion prompt
+        - Evidence-based practice (EBP) assignment
         - Presentation
     validations:
       required: true

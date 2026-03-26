@@ -1,0 +1,106 @@
+name: Evidence-Based Practice (EBP) Assignment
+description: Generate a structured EBP assignment using the PICO framework, including prompts, evaluation criteria, and reference guidance.
+title: '[EBP Assignment]: '
+labels:
+  - bsn
+  - ebp
+  - assignment
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request an **Evidence-Based Practice (EBP) assignment** for a BSN course.
+        The BSN Curriculum Agent will produce a structured assignment using the PICO(T) framework,
+        including assignment instructions, evaluation criteria, database search guidance, and a
+        grading rubric aligned to AACN Essentials and QSEN EBP competencies.
+
+  - type: input
+    id: title
+    attributes:
+      label: Assignment Title *
+      description: A descriptive title for this EBP assignment.
+      placeholder: 'e.g., PICO Project: Reducing CAUTI Rates in the ICU'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course this assignment will be used in.
+      placeholder: 'e.g., NUR 380 — Evidence-Based Practice in Nursing'
+
+  - type: textarea
+    id: clinical_problem
+    attributes:
+      label: Clinical Problem or PICO Focus *
+      description: >
+        Describe the clinical problem, population, or nursing practice area this assignment
+        should address. You may provide a complete PICO(T) question or just a general focus area.
+      placeholder: |
+        e.g., In adult ICU patients (P), does the implementation of a nurse-driven CAUTI
+        prevention bundle (I) compared to standard care (C) reduce catheter-associated
+        urinary tract infection rates (O) over a 6-month period (T)?
+
+        OR simply: Pressure injury prevention in long-term care residents.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: assignment_format
+    attributes:
+      label: Assignment Format *
+      description: What format should the final student deliverable take?
+      options:
+        - Written paper (APA format)
+        - Structured worksheet / template
+        - Poster presentation
+        - Oral presentation with slides
+        - Group project with written report
+        - PICO summary + annotated bibliography
+    validations:
+      required: true
+
+  - type: input
+    id: page_length
+    attributes:
+      label: Expected Length
+      description: Approximate length or scope of the assignment.
+      placeholder: 'e.g., 5–7 pages APA, 1-page summary + 5 annotated sources'
+
+  - type: dropdown
+    id: course_level
+    attributes:
+      label: Course Level
+      description: Academic level of the learners.
+      options:
+        - First year (pre-nursing / foundational)
+        - Second year (fundamentals)
+        - Third year (intermediate clinical)
+        - Fourth year (advanced clinical / capstone)
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: components
+    attributes:
+      label: Assignment Components to Include
+      description: Select all components the assignment should require students to complete.
+      options:
+        - label: Formulate a searchable PICO(T) question
+        - label: Conduct a systematic literature search (CINAHL, PubMed, Cochrane)
+        - label: Critically appraise at least 3–5 peer-reviewed sources
+        - label: Synthesize evidence and draw practice recommendations
+        - label: Identify barriers to implementation and strategies to overcome them
+        - label: Develop an implementation or quality improvement plan
+        - label: Include a grading rubric
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on APA formatting requirements, citation style, or accreditation alignment.
+      placeholder: |
+        e.g., Align assignment outcomes to AACN Essential 4 (Scholarship for Nursing Practice)
+        and QSEN EBP competency. Require APA 7th edition formatting. Include sample PICO
+        question as a model in the assignment instructions.

@@ -1,0 +1,123 @@
+name: Unfolding Case Study
+description: Generate a multi-phase branching clinical scenario with embedded NCLEX-NG questions and faculty-selectable outcome paths.
+title: '[Unfolding Case Study]: '
+labels:
+  - bsn
+  - unfolding-case-study
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request an **unfolding case study** — a multi-phase clinical scenario
+        that evolves over time, embeds NCLEX-NG questions at each phase, and branches to
+        faculty-selectable outcomes (e.g., stabilization, deterioration, escalation).
+
+        The BSN Curriculum Agent will produce a complete MDX file using `<ClinicalPhase />`,
+        `<BranchPoint />`, and `<CaseStudyDebriefing />` components.
+
+  - type: input
+    id: title
+    attributes:
+      label: Case Study Title *
+      description: A descriptive title for the unfolding scenario.
+      placeholder: 'e.g., Sepsis in a 54-Year-Old Female — An Unfolding Case Study'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course this case study is intended for.
+      placeholder: 'e.g., NUR 410 — Advanced Medical-Surgical Nursing'
+
+  - type: textarea
+    id: patient_profile
+    attributes:
+      label: Patient Profile *
+      description: Describe the patient population, presenting condition, and key demographic details.
+      placeholder: |
+        e.g., 54-year-old female with type 2 diabetes presenting to the ED with fever,
+        altered mental status, hypotension (BP 88/52), tachycardia (HR 118), and a
+        suspected urinary source of infection.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: phases
+    attributes:
+      label: Number of Phases *
+      description: How many distinct clinical phases should this case include? (Recommended: 3–5)
+      options:
+        - '3'
+        - '4'
+        - '5'
+    validations:
+      required: true
+
+  - type: textarea
+    id: phase_focus
+    attributes:
+      label: Learning Focus Per Phase *
+      description: >
+        Describe the clinical judgment skill or nursing concept each phase should emphasize.
+        List one per line (e.g., Phase 1 — Assessment; Phase 2 — Prioritization).
+      placeholder: |
+        Phase 1 — Initial assessment and cue recognition
+        Phase 2 — Prioritization and hypothesis generation
+        Phase 3 — Intervention and delegation
+        Phase 4 — Reassessment and outcome evaluation
+    validations:
+      required: true
+
+  - type: textarea
+    id: branch_outcomes
+    attributes:
+      label: Branch Outcomes *
+      description: >
+        Define the divergent outcome paths for each branch point. At minimum provide
+        two paths (e.g., stabilization and deterioration). Add a third for escalation/transfer.
+      placeholder: |
+        Path A — Stabilization: Patient responds to fluid resuscitation and antibiotics; transferred to step-down unit.
+        Path B — Deterioration: Septic shock develops; patient requires vasopressors and ICU transfer.
+        Path C — Escalation: Family requests goals-of-care conversation; palliative care consult initiated.
+    validations:
+      required: true
+
+  - type: textarea
+    id: bloom_levels
+    attributes:
+      label: Bloom's Taxonomy Levels Per Phase
+      description: List the target cognitive level for each phase's embedded questions.
+      placeholder: |
+        Phase 1 — Apply
+        Phase 2 — Analyze
+        Phase 3 — Analyze / Evaluate
+        Phase 4 — Evaluate
+
+  - type: dropdown
+    id: clinical_setting
+    attributes:
+      label: Clinical Setting
+      description: Where does this scenario take place?
+      options:
+        - Emergency department
+        - Medical-surgical unit
+        - ICU / critical care
+        - Postpartum / labor and delivery
+        - Pediatric unit
+        - Community / outpatient clinic
+        - Long-term care / skilled nursing facility
+        - Home health
+        - Other
+    validations:
+      required: false
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on NCLEX-NG formats, QSEN competencies, or output preferences.
+      placeholder: |
+        e.g., Use matrix/grid format questions in Phase 2. Emphasize TeamSTEPPS
+        communication tools in Phase 3. Include QSEN competency tags in the debriefing.
