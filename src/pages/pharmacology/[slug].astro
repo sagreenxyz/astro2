@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getCollection('pharmacology', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const base = import.meta.env.BASE_URL;
+const d = entry.data;
+---
+
+<BaseLayout title={d.title} description={`${d.drugClass} — ${d.mechanismOfAction.slice(0, 120)}`}>
+  <div class="max-w-3xl mx-auto">
+    <a href={`${base}pharmacology/`} class="btn btn-ghost btn-sm font-sans gap-2 mb-4">
+      ← All Drugs
+    </a>
+
+    <h1 class="text-3xl font-extrabold mb-1" style="color:#1a1a2e;">{d.title}</h1>
+    <p class="text-base-content/60 text-sm mb-4">
+      {d.drugClass}{d.subClass ? ` — ${d.subClass}` : ''}
+    </p>
+
+    {d.brandNames.length > 0 && (
+      <div class="mb-4">
+        <span class="font-semibold text-sm">Brand names:</span>{' '}
+        <span class="text-sm">{d.brandNames.join(', ')}</span>
+      </div>
+    )}
+
+    {d.routes.length > 0 && (
+      <div class="flex flex-wrap gap-1 mb-4">
+        {d.routes.map((r) => (
+          <span class="badge badge-outline badge-sm">{r}</span>
+        ))}
+      </div>
+    )}
+
+    <!-- Mechanism -->
+    <div class="card bg-base-100 border border-base-300 mb-4">
+      <div class="card-body py-3 px-5">
+        <h2 class="font-bold text-sm uppercase tracking-wide text-base-content/60">Mechanism of Action</h2>
+        <p class="text-sm mt-1">{d.mechanismOfAction}</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <!-- Indications -->
+      {d.indications.length > 0 && (
+        <div class="card bg-success/10 border border-success/30">
+          <div class="card-body py-3 px-5">
+            <h2 class="font-bold text-sm uppercase tracking-wide text-success">Indications</h2>
+            <ul class="list-disc list-inside text-sm space-y-1 mt-1">
+              {d.indications.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      <!-- Contraindications -->
+      {d.contraindications.length > 0 && (
+        <div class="card bg-error/10 border border-error/30">
+          <div class="card-body py-3 px-5">
+            <h2 class="font-bold text-sm uppercase tracking-wide text-error">Contraindications</h2>
+            <ul class="list-disc list-inside text-sm space-y-1 mt-1">
+              {d.contraindications.map((c) => <li>{c}</li>)}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Side Effects -->
+    {d.sideEffects && (
+      <div class="card bg-warning/10 border border-warning/30 mb-4">
+        <div class="card-body py-3 px-5">
+          <h2 class="font-bold text-sm uppercase tracking-wide text-warning-content">Side Effects</h2>
+          {d.sideEffects.common && d.sideEffects.common.length > 0 && (
+            <>
+              <p class="text-xs font-semibold mt-2 text-base-content/60">Common</p>
+              <ul class="list-disc list-inside text-sm space-y-1">
+                {d.sideEffects.common.map((s) => <li>{s}</li>)}
+              </ul>
+            </>
+          )}
+          {d.sideEffects.serious && d.sideEffects.serious.length > 0 && (
+            <>
+              <p class="text-xs font-semibold mt-2 text-error">⚠️ Serious</p>
+              <ul class="list-disc list-inside text-sm space-y-1 text-error/80">
+                {d.sideEffects.serious.map((s) => <li>{s}</li>)}
+              </ul>
+            </>
+          )}
+        </div>
+      </div>
+    )}
+
+    <!-- Nursing Considerations -->
+    {d.nursingConsiderations.length > 0 && (
+      <div class="card bg-info/10 border border-info/30 mb-4">
+        <div class="card-body py-3 px-5">
+          <h2 class="font-bold text-sm uppercase tracking-wide text-info">Nursing Considerations</h2>
+          <ul class="list-disc list-inside text-sm space-y-1 mt-1">
+            {d.nursingConsiderations.map((n) => <li>{n}</li>)}
+          </ul>
+        </div>
+      </div>
+    )}
+
+    <!-- Patient Teaching -->
+    {d.patientTeaching.length > 0 && (
+      <div class="card bg-base-200 border border-base-300 mb-4">
+        <div class="card-body py-3 px-5">
+          <h2 class="font-bold text-sm uppercase tracking-wide text-base-content/60">Patient Teaching</h2>
+          <ul class="list-disc list-inside text-sm space-y-1 mt-1">
+            {d.patientTeaching.map((p) => <li>{p}</li>)}
+          </ul>
+        </div>
+      </div>
+    )}
+
+    <!-- MDX body content -->
+    <div class="prose prose-sm max-w-none mt-6">
+      <Content />
+    </div>
+
+    {d.tags.length > 0 && (
+      <div class="flex flex-wrap gap-1 mt-6">
+        {d.tags.map((t) => (
+          <span class="badge badge-outline badge-sm">{t}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>
