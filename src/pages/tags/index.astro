@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+// Collect all tags from all four collections
+const [encyclopediaEntries, coursesEntries, notesEntries, quizzesEntries] = await Promise.all([
+  getCollection('encyclopedia', ({ data }) => !data.draft),
+  getCollection('courses', ({ data }) => !data.draft),
+  getCollection(
+    'notes',
+    ({ data }) => !data.draft && data.visibility === 'public' && data.reviewState === 'published'
+  ),
+  getCollection('quizzes', ({ data }) => !data.draft),
+]);
+
+const allEntries = [...encyclopediaEntries, ...coursesEntries, ...notesEntries, ...quizzesEntries];
+
+// Build a map of tag -> count
+const tagCounts = new Map<string, number>();
+for (const entry of allEntries) {
+  for (const tag of entry.data.tags ?? []) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+
+// Sort alphabetically
+const sortedTags = [...tagCounts.entries()].sort(([a], [b]) => a.localeCompare(b));
+---
+
+<BaseLayout title="Tags" description="Browse all content by tag">
+  <h1 class="text-3xl font-bold mb-2">Tags</h1>
+  <p class="text-base-content/60 font-sans mb-8">
+    Browse encyclopedia entries, courses, notes, and quizzes by topic tag.
+  </p>
+
+  {
+    sortedTags.length === 0 ? (
+      <div class="alert font-sans">
+        <span>No tags found across any content.</span>
+      </div>
+    ) : (
+      <div class="flex flex-wrap gap-3">
+        {sortedTags.map(([tag, count]) => (
+          <a
+            href={`${base}tags/${encodeURIComponent(tag)}/`}
+            class="badge badge-outline badge-lg font-sans hover:badge-primary transition-colors gap-1.5 py-3 px-4"
+          >
+            {tag}
+            <span class="badge badge-sm badge-neutral">{count}</span>
+          </a>
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>
