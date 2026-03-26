@@ -362,6 +362,287 @@ export const MICROBES: Microbe[] = [
       ],
     },
   },
+
+  // ── 6. VRE (Vancomycin-resistant Enterococcus) ───────────────────────────
+  {
+    id: 'vre',
+    name: 'Vancomycin-resistant Enterococcus',
+    commonName: 'VRE',
+    category: 'bacteria',
+    primaryPrecaution: 'contact',
+    additionalPrecautions: [],
+    escalationRules: [],
+    chainOfInfection: {
+      infectiousAgent:
+        'Enterococcus faecalis or faecium — Gram-positive cocci resistant to vancomycin via vanA/vanB genes',
+      reservoir: 'GI tract of colonized/infected patients; contaminated environment and surfaces',
+      portalOfExit: 'Feces, wound drainage, urine (UTI)',
+      modeOfTransmission:
+        'Direct contact (hands of HCW) or indirect contact (contaminated surfaces/equipment)',
+      portalOfEntry: 'GI tract, urinary tract, wounds, indwelling devices',
+      susceptibleHost:
+        'Immunocompromised patients, those with prolonged antibiotic exposure, ICU patients, transplant recipients',
+    },
+    keyChainBreakers: [
+      'Don gloves and gown before entering the room',
+      'Hand hygiene with ABHR or soap and water after patient contact',
+      'Dedicate patient-care equipment to VRE patient',
+      'Place patient in private room; cohort if needed',
+      'Antimicrobial stewardship to limit vancomycin use',
+      'Active surveillance cultures in ICU and high-risk units',
+    ],
+    background: {
+      virulence:
+        'Intrinsically resistant to several antibiotics; acquired vancomycin resistance leaves few treatment options (linezolid, daptomycin)',
+      colonization:
+        'GI colonization can persist for months to years; patient remains a reservoir even when asymptomatic',
+      biofilm: 'Forms biofilm on urinary catheters, central lines, and prosthetic devices',
+      typicalSyndromes: [
+        'Urinary tract infections (most common)',
+        'Bacteremia',
+        'Wound infections',
+        'Endocarditis (less common)',
+      ],
+      reservoir: 'GI tract of colonized/infected patients; environmental surfaces',
+      portalsOfExit: ['Feces', 'Urine', 'Wound drainage'],
+      modesOfTransmission: [
+        'Direct contact via contaminated hands of HCW',
+        'Indirect contact via contaminated equipment or surfaces',
+      ],
+      portalsOfEntry: ['Urinary tract (catheter)', 'Wounds', 'IV sites', 'GI tract (oral)'],
+      infectiousDose: 'Low — small inoculum sufficient in susceptible hosts',
+      contagiousness: 'High in healthcare settings among at-risk patients',
+      environmentalPersistence:
+        'Survives on dry surfaces for days to weeks; resistant to some disinfectants at low concentrations',
+      incubationPeriod: 'Colonization can precede infection by weeks to months',
+      highRiskHosts: [
+        'ICU patients',
+        'Organ transplant recipients',
+        'Oncology patients',
+        'Patients with prolonged hospitalization',
+        'Prior vancomycin or broad-spectrum antibiotic use',
+      ],
+      commonNursingPitfalls: [
+        'Forgetting to don gown AND gloves before any room contact',
+        'Sharing equipment (glucometer, BP cuff) between VRE and non-VRE patients',
+        'Not performing hand hygiene after glove removal',
+        'Discontinuing Contact Precautions prematurely without clearance cultures',
+      ],
+      escalationTriggers: [],
+    },
+  },
+
+  // ── 7. Norovirus ─────────────────────────────────────────────────────────
+  {
+    id: 'norovirus',
+    name: 'Norovirus',
+    commonName: 'Norovirus',
+    category: 'virus',
+    primaryPrecaution: 'contact',
+    additionalPrecautions: [],
+    escalationRules: [],
+    chainOfInfection: {
+      infectiousAgent:
+        'Norovirus — non-enveloped, single-stranded RNA calicivirus; extremely stable in the environment',
+      reservoir: 'Infected humans (symptomatic and asymptomatic); contaminated food and water',
+      portalOfExit: 'Vomitus and feces; aerosolized vomitus during vomiting episodes',
+      modeOfTransmission:
+        'Fecal-oral route; contact with contaminated surfaces or food; aerosolized vomitus (short-range)',
+      portalOfEntry: 'Oral ingestion of contaminated material; mucous membranes',
+      susceptibleHost:
+        'Nearly universal — no lasting immunity; elderly and immunocompromised at risk for severe disease',
+    },
+    keyChainBreakers: [
+      'Don gloves and gown before room entry; add surgical mask during active vomiting episodes',
+      'Soap and water hand hygiene — ABHR is less effective against non-enveloped norovirus',
+      'Immediate containment and cleaning of vomiting incidents with bleach-based disinfectant',
+      'Cohorting affected patients and restricting ill staff from patient care',
+      'Outbreak management: restrict unit access, notify infection control',
+      'Thorough environmental cleaning with bleach (1,000–5,000 ppm)',
+    ],
+    background: {
+      virulence:
+        'Extremely low infectious dose (~18 viral particles); non-enveloped structure resists many disinfectants; rapid replication in GI tract',
+      colonization: 'No persistent colonization; shedding continues up to 2 weeks after recovery',
+      biofilm:
+        'Adheres tenaciously to surfaces; standard hospital disinfectants may be ineffective',
+      typicalSyndromes: [
+        'Acute gastroenteritis (nausea, vomiting, watery diarrhea)',
+        'Dehydration and electrolyte imbalances',
+        'Severe complications in elderly/immunocompromised',
+      ],
+      reservoir: 'Infected humans; contaminated food and water; surfaces',
+      portalsOfExit: ['Vomitus', 'Feces', 'Aerosolized vomitus (projectile)'],
+      modesOfTransmission: [
+        'Fecal-oral (contaminated hands or surfaces)',
+        'Ingestion of contaminated food or water',
+        'Person-to-person via vomiting aerosols (short-range)',
+      ],
+      portalsOfEntry: ['Oral ingestion', 'Mucous membranes'],
+      infectiousDose: 'Extremely low — as few as 18 viral particles',
+      contagiousness: 'Very high — R0 estimates of 2–5 in closed settings',
+      environmentalPersistence:
+        'Survives on surfaces for days to weeks; resistant to alcohol-based cleaners',
+      incubationPeriod: '12–48 hours',
+      highRiskHosts: [
+        'Elderly in long-term care',
+        'Immunocompromised',
+        'Patients with underlying GI disease',
+        'Young children',
+      ],
+      commonNursingPitfalls: [
+        'Using ABHR instead of soap and water (insufficient for non-enveloped virus)',
+        'Inadequate PPE during vomiting cleanup — forgetting mask when vomiting aerosol risk is high',
+        'Not notifying infection control when ≥2 patients have concurrent GI illness',
+        'Ill staff members continuing to work during norovirus illness',
+        'Insufficient contact time with bleach disinfectant during environmental cleaning',
+      ],
+      escalationTriggers: [],
+    },
+  },
+
+  // ── 8. RSV (Respiratory Syncytial Virus) ─────────────────────────────────
+  {
+    id: 'rsv',
+    name: 'Respiratory Syncytial Virus',
+    commonName: 'RSV',
+    category: 'virus',
+    primaryPrecaution: 'contact',
+    additionalPrecautions: ['droplet'],
+    escalationRules: [],
+    chainOfInfection: {
+      infectiousAgent:
+        'Respiratory Syncytial Virus — enveloped, negative-sense RNA paramyxovirus; F protein mediates cell fusion',
+      reservoir: 'Infected humans (symptomatic and mildly symptomatic adults)',
+      portalOfExit:
+        'Respiratory secretions via coughing, sneezing, and direct contact with nasal secretions',
+      modeOfTransmission:
+        'Direct contact with nasal secretions; large respiratory droplets (≥5 μm); inoculation via eyes or nose from contaminated hands',
+      portalOfEntry: 'Nasal mucosa, conjunctiva (most common self-inoculation route)',
+      susceptibleHost:
+        'Infants <12 months (especially premature), elderly, immunocompromised, those with cardiopulmonary disease',
+    },
+    keyChainBreakers: [
+      'Don gloves and gown before room entry (contact precautions)',
+      'Add surgical mask within 3 feet (droplet component)',
+      'Rigorous hand hygiene — RSV spread often involves hand-to-nose/eye self-inoculation',
+      'Avoid touching eyes, nose, and mouth with ungloved hands',
+      'Dedicated equipment for RSV patient',
+      'Palivizumab prophylaxis for high-risk infants (born <35 weeks GA, CHD, chronic lung disease)',
+    ],
+    background: {
+      virulence:
+        'F (fusion) protein promotes cell-cell fusion → syncytia formation → severe bronchiolitis; re-infection common throughout life',
+      colonization:
+        'No persistent colonization; shedding typically 3–8 days (up to 4 weeks in immunocompromised)',
+      biofilm: 'Does not form biofilm; inactivated by standard hospital disinfectants',
+      typicalSyndromes: [
+        'Bronchiolitis (infants)',
+        'Croup',
+        'Pneumonia',
+        'Upper respiratory infection (adults)',
+        'Severe respiratory failure in premature infants',
+      ],
+      reservoir:
+        'Infected humans — often mildly symptomatic adults carrying and transmitting to infants',
+      portalsOfExit: ['Nasal secretions', 'Cough', 'Sneeze'],
+      modesOfTransmission: [
+        'Direct inoculation via nasal secretions or conjunctiva',
+        'Large respiratory droplets',
+        'Indirect contact via contaminated surfaces (survives 6+ hours)',
+      ],
+      portalsOfEntry: ['Nasal mucosa', 'Conjunctiva'],
+      infectiousDose: 'Low; hand-to-nose inoculation is a primary route',
+      contagiousness: 'High in pediatric units during RSV season (fall–spring)',
+      environmentalPersistence: 'Survives on hard surfaces for 4–7 hours; on hands for ~30 minutes',
+      incubationPeriod: '4–6 days',
+      highRiskHosts: [
+        'Premature infants',
+        'Infants with congenital heart disease',
+        'Infants with bronchopulmonary dysplasia',
+        'Immunocompromised children',
+        'Elderly adults',
+      ],
+      commonNursingPitfalls: [
+        'Omitting gown — RSV spreads via contact AND droplets so full PPE is needed',
+        'Touching nose or eyes after patient contact before hand hygiene',
+        'HCW with mild URI symptoms (which could be RSV) caring for high-risk infants without extra precautions',
+        'Not cohorting RSV patients during peak season',
+      ],
+      escalationTriggers: [],
+    },
+  },
+
+  // ── 9. Neisseria meningitidis ─────────────────────────────────────────────
+  {
+    id: 'n-meningitidis',
+    name: 'Neisseria meningitidis',
+    commonName: 'Meningococcus',
+    category: 'bacteria',
+    primaryPrecaution: 'droplet',
+    additionalPrecautions: [],
+    escalationRules: [],
+    chainOfInfection: {
+      infectiousAgent:
+        'Neisseria meningitidis — encapsulated Gram-negative diplococcus; serotypes A, B, C, W, Y cause most disease',
+      reservoir: 'Nasopharynx of human carriers (~10–35% asymptomatic carriage rate)',
+      portalOfExit: 'Respiratory secretions — coughing, sneezing, kissing, close contact',
+      modeOfTransmission:
+        'Respiratory droplets requiring close contact (typically <3 feet, prolonged exposure)',
+      portalOfEntry: 'Nasopharyngeal mucosa',
+      susceptibleHost:
+        'Unvaccinated individuals, college students (dormitory living), asplenic patients, complement-deficient patients',
+    },
+    keyChainBreakers: [
+      'Initiate Droplet Precautions immediately — surgical mask before entering room',
+      'Administer parenteral antibiotics immediately (do not delay for procedures)',
+      'Provide post-exposure chemoprophylaxis to close contacts (rifampin, ciprofloxacin, or ceftriaxone)',
+      'Notify public health for outbreak investigation and contact tracing',
+      'Meningococcal vaccination (MenACWY, MenB) for at-risk populations',
+      'Discontinue Droplet Precautions 24 hours after start of effective antimicrobial therapy',
+    ],
+    background: {
+      virulence:
+        'Polysaccharide capsule evades phagocytosis; endotoxin triggers massive inflammatory cascade → septic shock; can progress from symptoms to death within 24 hours',
+      colonization: 'Asymptomatic nasopharyngeal carriage is common; invasive disease is rare',
+      biofilm: 'Forms biofilm in nasopharynx; biofilm may protect from host defenses',
+      typicalSyndromes: [
+        'Bacterial meningitis (fever, severe headache, nuchal rigidity, photophobia)',
+        'Meningococcemia/septicemia (purpuric or petechial rash — classic)',
+        'Waterhouse-Friderichsen syndrome (adrenal hemorrhage, shock)',
+        'Pneumonia, arthritis, pericarditis (less common)',
+      ],
+      reservoir: 'Nasopharynx of colonized humans',
+      portalsOfExit: ['Respiratory secretions', 'Nasopharyngeal secretions during close contact'],
+      modesOfTransmission: [
+        'Respiratory droplets during close, prolonged contact',
+        'Direct contact with oral secretions',
+      ],
+      portalsOfEntry: ['Nasopharyngeal mucosa'],
+      infectiousDose:
+        'Low; host factors (complement deficiency, asplenia) dramatically increase risk',
+      contagiousness:
+        'Low attack rate (most exposures do not lead to disease); close contacts at highest risk',
+      environmentalPersistence:
+        'Fragile outside host; does not survive long on surfaces; sunlight, drying, and heat kill rapidly',
+      incubationPeriod: '1–10 days (typically 3–4 days)',
+      highRiskHosts: [
+        'College students in dormitories',
+        'Asplenic individuals',
+        'Complement-deficient patients',
+        'Unvaccinated individuals',
+        'Military recruits',
+      ],
+      commonNursingPitfalls: [
+        'Delaying antibiotic administration while waiting for test results — time is critical',
+        'Not wearing a surgical mask before entering the room',
+        'Failing to notify infection control and public health',
+        'Not assessing HCW exposure and arranging chemoprophylaxis',
+        'Discontinuing Droplet Precautions before 24 hours of effective antibiotics',
+      ],
+      escalationTriggers: [],
+    },
+  },
 ];
 
 export function getMicrobeById(id: string): Microbe | undefined {
