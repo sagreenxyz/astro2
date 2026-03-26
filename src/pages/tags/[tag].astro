@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const [encyclopediaEntries, coursesEntries, notesEntries, quizzesEntries] = await Promise.all([
+    getCollection('encyclopedia', ({ data }) => !data.draft),
+    getCollection('courses', ({ data }) => !data.draft),
+    getCollection(
+      'notes',
+      ({ data }) => !data.draft && data.visibility === 'public' && data.reviewState === 'published'
+    ),
+    getCollection('quizzes', ({ data }) => !data.draft),
+  ]);
+
+  // Gather all unique tags across all collections
+  const allTags = new Set<string>();
+  for (const entry of [
+    ...encyclopediaEntries,
+    ...coursesEntries,
+    ...notesEntries,
+    ...quizzesEntries,
+  ]) {
+    for (const tag of entry.data.tags ?? []) {
+      allTags.add(tag);
+    }
+  }
+
+  return [...allTags].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      encyclopedia: encyclopediaEntries.filter((e) => e.data.tags?.includes(tag)),
+      courses: coursesEntries.filter((e) => e.data.tags?.includes(tag)),
+      notes: notesEntries.filter((e) => e.data.tags?.includes(tag)),
+      quizzes: quizzesEntries.filter((e) => e.data.tags?.includes(tag)),
+    },
+  }));
+};
+
+const { tag, encyclopedia, courses, notes, quizzes } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+type Section = {
+  label: string;
+  entries: { slug: string; data: { title: string } }[];
+  basePath: string;
+};
+
+const sections: Section[] = [
+  { label: 'Encyclopedia', entries: encyclopedia, basePath: 'encyclopedia' },
+  { label: 'Courses', entries: courses, basePath: 'courses' },
+  { label: 'Notes', entries: notes, basePath: 'notes' },
+  { label: 'Quizzes', entries: quizzes, basePath: 'quizzes' },
+].filter((s) => s.entries.length > 0);
+
+const totalCount = sections.reduce((acc, s) => acc + s.entries.length, 0);
+---
+
+<BaseLayout title={`Tag: ${tag}`} description={`All content tagged with "${tag}"`}>
+  <div class="mb-6">
+    <a href={`${base}tags/`} class="btn btn-ghost btn-sm font-sans gap-2"> ← All Tags </a>
+  </div>
+
+  <h1 class="text-3xl font-bold mb-2">
+    Tag: <span class="badge badge-outline badge-lg align-middle ml-1">{tag}</span>
+  </h1>
+  <p class="text-base-content/60 font-sans mb-8">
+    {totalCount} item{totalCount === 1 ? '' : 's'} tagged with &ldquo;{tag}&rdquo;
+  </p>
+
+  {
+    sections.length === 0 ? (
+      <div class="alert font-sans">
+        <span>No content found for this tag.</span>
+      </div>
+    ) : (
+      <div class="space-y-10">
+        {sections.map((section) => (
+          <section>
+            <h2 class="text-xl font-semibold mb-4 border-b border-base-300 pb-2">
+              {section.label}
+            </h2>
+            <ul class="space-y-2">
+              {section.entries.map((entry) => (
+                <li>
+                  <a
+                    href={`${base}${section.basePath}/${entry.slug}/`}
+                    class="card card-border bg-base-100 hover:shadow-md transition-shadow no-underline font-sans block"
+                  >
+                    <div class="card-body py-3 px-4">
+                      <span class="font-medium text-sm">{entry.data.title}</span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    )
+  }
+</BaseLayout>
