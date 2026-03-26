@@ -1,0 +1,82 @@
+name: Curriculum Map
+description: Generate a tabular curriculum map showing alignment of BSN courses and outcomes to accreditation standards (AACN Essentials, NCLEX-NG, QSEN, ACEN/CCNE).
+title: '[Curriculum Map]: '
+labels:
+  - bsn
+  - curriculum-map
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request a **curriculum map** for the BSN program or a subset of courses.
+        The BSN Curriculum Agent will produce a tabular alignment map rendered via the
+        `<CourseObjectiveMap />` component, showing how courses and outcomes map to
+        AACN Essentials (2021), NCLEX-NG, QSEN, and ACEN/CCNE standards.
+
+  - type: input
+    id: title
+    attributes:
+      label: Map Title *
+      description: A descriptive title for this curriculum map.
+      placeholder: 'e.g., BSN Program Outcomes to AACN Essentials Alignment Map'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: map_scope
+    attributes:
+      label: Map Scope *
+      description: What scope should this curriculum map cover?
+      options:
+        - Full BSN program (all courses)
+        - Single course (one course to standards)
+        - Program outcomes to accreditation standards
+        - Course sequence (strand or track)
+        - Specific domain or competency area
+    validations:
+      required: true
+
+  - type: textarea
+    id: courses
+    attributes:
+      label: Courses to Include
+      description: List the course names or numbers to be mapped. (Leave blank for a full-program map.)
+      placeholder: |
+        NUR 101 — Introduction to Professional Nursing
+        NUR 201 — Health Assessment
+        NUR 301 — Medical-Surgical Nursing I
+        NUR 302 — Medical-Surgical Nursing II
+        NUR 401 — Leadership and Management in Nursing
+
+  - type: checkboxes
+    id: standards
+    attributes:
+      label: Standards Frameworks to Include *
+      description: Select all accreditation or regulatory frameworks to map against.
+      options:
+        - label: AACN Essentials (2021) — Core Competencies for Professional Nursing Education
+          required: true
+        - label: NCLEX-NG Clinical Judgment Measurement Model (CJMM)
+        - label: QSEN Competencies (Quality and Safety Education for Nurses)
+        - label: ACEN Standards
+        - label: CCNE Standards
+
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: Program or Course Outcomes to Map
+      description: List the outcomes you want mapped. (Leave blank and the agent will extract them from course syllabi if available.)
+      placeholder: |
+        1. Demonstrate clinical judgment in caring for diverse patient populations.
+        2. Apply evidence-based practice to improve patient outcomes.
+        3. Communicate effectively within interprofessional teams.
+        4. Provide culturally sensitive, patient-centered care.
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on map format, level of detail, or specific standards to highlight.
+      placeholder: |
+        e.g., Highlight gaps where AACN Domain 4 (Scholarship) is not yet addressed.
+        Use I/R/M notation (Introduced / Reinforced / Mastered) for each course-outcome cell.

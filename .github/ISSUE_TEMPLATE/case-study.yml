@@ -1,0 +1,96 @@
+name: Case Study / Clinical Scenario
+description: Generate a realistic patient case study or clinical scenario with guided reflection questions and a debriefing guide.
+title: '[Case Study]: '
+labels:
+  - bsn
+  - case-study
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request a **case study or clinical scenario** for BSN instruction.
+        The BSN Curriculum Agent will produce a patient scenario, assessment data, guiding
+        questions aligned to NCLEX-NG clinical judgment, and a debriefing guide.
+
+        For multi-phase branching scenarios, use the **Unfolding Case Study** template instead.
+
+  - type: input
+    id: title
+    attributes:
+      label: Case Study Title or Topic *
+      description: A descriptive title for the scenario.
+      placeholder: 'e.g., Acute Heart Failure in a 68-Year-Old Male'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course this case study is intended for.
+      placeholder: 'e.g., NUR 301 — Medical-Surgical Nursing I'
+
+  - type: textarea
+    id: patient_profile
+    attributes:
+      label: Patient Profile *
+      description: Describe the patient population, presenting condition, and any required demographic details.
+      placeholder: |
+        e.g., 68-year-old male with a history of hypertension and type 2 diabetes presenting
+        with shortness of breath, orthopnea, and bilateral ankle edema. BP 158/94, HR 102,
+        SpO2 90% on room air.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: clinical_setting
+    attributes:
+      label: Clinical Setting *
+      description: Where does this scenario take place?
+      options:
+        - Emergency department
+        - Medical-surgical unit
+        - ICU / critical care
+        - Postpartum / labor and delivery
+        - Pediatric unit
+        - Community / outpatient clinic
+        - Long-term care / skilled nursing facility
+        - Home health
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: learning_focus
+    attributes:
+      label: Learning Focus *
+      description: What clinical judgment skills or nursing concepts should this case reinforce?
+      placeholder: |
+        e.g., Assessment of fluid volume excess, safe medication administration,
+        patient education on diuretic therapy, interprofessional communication (SBAR)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: bloom_level
+    attributes:
+      label: Primary Bloom's Taxonomy Level
+      description: The primary cognitive level targeted by this case study.
+      options:
+        - Remember
+        - Understand
+        - Apply
+        - Analyze
+        - Evaluate
+        - Create
+    validations:
+      required: false
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on scenario complexity, QSEN competencies, or assessment format.
+      placeholder: |
+        e.g., Include SBAR communication scenario. Align debriefing to QSEN Safety
+        and Patient-Centered Care competencies. Add 3 application-level guiding questions.

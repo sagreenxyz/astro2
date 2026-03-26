@@ -1,0 +1,93 @@
+name: Simulation Lab Instructions
+description: Generate step-by-step simulation setup, a scenario script, and a debriefing framework for a nursing skills lab.
+title: '[Simulation Lab]: '
+labels:
+  - bsn
+  - simulation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request **simulation lab instructions** for a BSN skills or
+        clinical reasoning lab. The BSN Curriculum Agent will produce a simulation setup
+        guide, scenario script, and structured debriefing framework.
+
+  - type: input
+    id: title
+    attributes:
+      label: Simulation Title *
+      description: A descriptive title for the simulation scenario.
+      placeholder: 'e.g., Postpartum Hemorrhage Management — High-Fidelity Simulation'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course or lab this simulation supports.
+      placeholder: 'e.g., NUR 350 — Maternal-Newborn Nursing Lab'
+
+  - type: textarea
+    id: scenario_overview
+    attributes:
+      label: Scenario Overview *
+      description: Describe the patient situation, clinical setting, and presenting problem.
+      placeholder: |
+        e.g., A 28-year-old G2P2 patient is 30 minutes post-vaginal delivery. The nurse
+        notes heavy vaginal bleeding, a boggy fundus, tachycardia (HR 118), and BP 92/58.
+        The scenario focuses on fundal massage, oxytocin administration, and escalation.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: fidelity
+    attributes:
+      label: Simulation Fidelity Level *
+      description: What level of simulation fidelity will be used?
+      options:
+        - Low fidelity (task trainer / static manikin)
+        - Medium fidelity (partial task trainer with limited feedback)
+        - High fidelity (full-body simulator with physiologic responses)
+        - Standardized patient (human actor)
+        - Virtual / screen-based simulation
+    validations:
+      required: true
+
+  - type: input
+    id: duration
+    attributes:
+      label: Scenario Duration
+      description: How long should the active simulation run?
+      placeholder: 'e.g., 20 minutes active scenario, 30 minutes debrief'
+
+  - type: textarea
+    id: learning_objectives
+    attributes:
+      label: Learning Objectives *
+      description: List the specific skills or clinical judgment outcomes students should demonstrate.
+      placeholder: |
+        - Perform fundal assessment and uterine massage correctly
+        - Administer oxytocin per standing orders
+        - Communicate using SBAR to the provider
+        - Initiate emergency response per institution protocol
+    validations:
+      required: true
+
+  - type: textarea
+    id: equipment
+    attributes:
+      label: Required Equipment and Setup
+      description: List any specific manikins, task trainers, medications, supplies, or room configurations needed.
+      placeholder: |
+        e.g., High-fidelity obstetric manikin, IV supplies, oxytocin vials (simulated),
+        postpartum assessment documentation form, provider phone script
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any additional guidance on roles, debriefing frameworks, or QSEN competency alignment.
+      placeholder: |
+        e.g., Include a faculty facilitator guide with embedded cues for each phase.
+        Use the Debriefing with Good Judgment framework. Align to QSEN Safety competency.

@@ -1,0 +1,104 @@
+name: NCLEX-Style Quiz Questions
+description: Generate NCLEX-NG style quiz questions (MCQ, SATA, matrix, trend, and other alternate item formats).
+title: '[NCLEX Quiz]: '
+labels:
+  - bsn
+  - quiz
+  - nclex
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request **NCLEX-NG style quiz questions** aligned to the
+        Clinical Judgment Measurement Model (CJMM). The BSN Curriculum Agent will generate
+        questions with correct answers, rationales, and NCLEX-NG format tags.
+
+  - type: input
+    id: topic
+    attributes:
+      label: Topic or Content Area *
+      description: The nursing concept, system, or clinical area the questions should cover.
+      placeholder: 'e.g., Cardiac arrhythmias, Postpartum hemorrhage, Medication safety'
+    validations:
+      required: true
+
+  - type: input
+    id: course
+    attributes:
+      label: Course Name or Number
+      description: The course these questions will be used in.
+      placeholder: 'e.g., NUR 410 — Advanced Medical-Surgical Nursing'
+
+  - type: input
+    id: quantity
+    attributes:
+      label: Number of Questions *
+      description: How many questions do you need?
+      placeholder: 'e.g., 5, 10, 20'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: nclex_format
+    attributes:
+      label: Primary Question Format *
+      description: Which NCLEX-NG format should the agent prioritize?
+      options:
+        - Multiple choice (MCQ) — single best answer
+        - Select all that apply (SATA)
+        - Extended multiple response
+        - Matrix / grid
+        - Drop-down (cloze)
+        - Trend (vital signs / lab interpretation)
+        - Bow-tie (clinical judgment)
+        - Mixed formats
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cjmm_layer
+    attributes:
+      label: NCLEX-NG Clinical Judgment Layer
+      description: Which CJMM cognitive skill should the questions target?
+      options:
+        - Recognize cues
+        - Analyze cues
+        - Prioritize hypotheses
+        - Generate solutions
+        - Take action
+        - Evaluate outcomes
+        - Mixed / all layers
+    validations:
+      required: false
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty Level
+      description: Approximate NCLEX difficulty level for these questions.
+      options:
+        - Foundational (remember / understand)
+        - Application (apply)
+        - Analysis (analyze / evaluate)
+        - Mixed difficulty
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Clinical Context or Source Material
+      description: >
+        Paste any source notes, case details, or topic outlines the agent should
+        use when generating the questions.
+      placeholder: |
+        Paste lecture notes, clinical guidelines, or scenario context here...
+
+  - type: textarea
+    id: special_instructions
+    attributes:
+      label: Special Instructions for the Agent
+      description: Any specific guidance on question style, patient populations, or alignment.
+      placeholder: |
+        e.g., Focus on the older adult population. Include at least 2 priority-setting
+        questions. Rationales should cite evidence-based practice guidelines.
