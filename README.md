@@ -921,14 +921,15 @@ The goal is for each session's hard-won lessons to become the next session's sta
 
 The project uses a consistent four-tier button system based on DaisyUI v5 with the Corporate theme:
 
-| Button type | Classes | Use for |
-|---|---|---|
-| **Primary action** | `btn btn-primary btn-sm font-sans` | Submit, Start, Next (forward flow) |
-| **Back / secondary navigation** | `btn btn-soft btn-primary btn-sm font-sans` | ← Back, ← All X links |
-| **Destructive** | `btn btn-soft btn-error btn-sm font-sans` | Clear History |
-| **Sign In / Sign Out (navbar)** | `btn btn-neutral btn-sm font-sans` | Auth actions in navbar |
+| Button type                     | Classes                                     | Use for                            |
+| ------------------------------- | ------------------------------------------- | ---------------------------------- |
+| **Primary action**              | `btn btn-primary btn-sm font-sans`          | Submit, Start, Next (forward flow) |
+| **Back / secondary navigation** | `btn btn-soft btn-primary btn-sm font-sans` | ← Back, ← All X links              |
+| **Destructive**                 | `btn btn-soft btn-error btn-sm font-sans`   | Clear History                      |
+| **Sign In / Sign Out (navbar)** | `btn btn-neutral btn-sm font-sans`          | Auth actions in navbar             |
 
 Additional notes:
+
 - All buttons should include `btn-sm` and `font-sans` for consistent sizing and typography.
 - Add `gap-2` (or `gap-1`) when a button contains an icon alongside text.
 - `btn-ghost` is **not used** — it is indistinguishable from plain text.

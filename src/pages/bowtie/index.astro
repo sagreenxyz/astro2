@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BowtieTester from '../../components/bowtie/BowtieTester.svelte';
+---
+
+<BaseLayout
+  title="NGN Bowtie Questions"
+  description="Practice NCLEX Next Generation NGN Bowtie clinical judgment questions across multiple nursing scenarios."
+  fullWidth={true}
+>
+  <BowtieTester client:load />
+</BaseLayout>
