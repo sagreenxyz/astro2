@@ -297,5 +297,38 @@
     "definition": "A coordinated effort to optimize the selection, dose, route, and duration of antibiotic therapy to achieve the best clinical outcomes while minimizing adverse events, including the emergence and spread of antibiotic-resistant organisms. Nurses play a key role by obtaining cultures before antibiotic administration, monitoring for adverse effects, and educating patients about completing prescribed courses.",
     "relatedTerms": ["CDI", "MRSA", "HAI", "Infection Control"],
     "slug": "antibiotic-stewardship"
+  },
+  {
+    "term": "Sterile Field",
+    "definition": "A designated area, typically defined by a sterile drape or sterile packaging, that is considered free of all microorganisms including spores. Everything within a sterile field must be sterile; any item or person making contact with the field that is not sterile contaminates the entire field. The sterile field must remain in the nurse's direct line of sight at all times, must not be left unattended, and must be discarded and reconstructed if contamination occurs or is suspected. The one-inch (2.5 cm) border around the edge of the sterile drape is considered non-sterile and must not be used to place sterile items.",
+    "relatedTerms": [
+      "Surgical Asepsis",
+      "Strike-Through Contamination",
+      "One-Inch Border Rule",
+      "Sterile Technique"
+    ],
+    "slug": "sterile-field"
+  },
+  {
+    "term": "Strike-Through Contamination",
+    "definition": "The transfer of microorganisms from a non-sterile surface through a sterile barrier (such as a drape, packaging, or gown) via moisture. When a sterile surface becomes wet and contacts a non-sterile surface — or when a non-sterile liquid penetrates sterile packaging — the sterile barrier is considered permanently compromised and the item or field must be discarded. Strike-through contamination is one of the most commonly violated principles of sterile technique and is a leading mechanism by which sterile fields are inadvertently contaminated in clinical practice.",
+    "relatedTerms": [
+      "Sterile Field",
+      "Surgical Asepsis",
+      "Sterile Technique",
+      "Infection Control"
+    ],
+    "slug": "strike-through-contamination"
+  },
+  {
+    "term": "One-Inch Border Rule",
+    "definition": "A principle of sterile technique that states the outermost one inch (approximately 2.5 cm) of a sterile drape or sterile field border is considered non-sterile and must not be used to hold or position sterile items. This rule acknowledges that the edge of a sterile drape is prone to contact with non-sterile surfaces and environmental contamination. Nurses must ensure that all sterile items are placed in the interior of the sterile field, away from the border zone. Items that drift into the one-inch border zone must be treated as contaminated.",
+    "relatedTerms": [
+      "Sterile Field",
+      "Surgical Asepsis",
+      "Strike-Through Contamination",
+      "Sterile Technique"
+    ],
+    "slug": "one-inch-border-rule"
   }
 ]
