@@ -1133,4 +1133,35 @@ export const BOWTIE_SCENARIOS: BowTieScenario[] = [
     rationale:
       'A large-for-gestational-age neonate born to a GDM mother is at high risk for neonatal hypoglycemia due to hyperinsulinism from in utero glucose excess. A glucose of 28 mg/dL with symptoms (jitteriness, lethargy, weak suck, cyanosis) constitutes symptomatic neonatal hypoglycemia requiring immediate intervention. For a symptomatic neonate who cannot feed effectively, a D10W IV minibolus (200 mg/kg = 2 mL/kg) provides rapid glucose delivery; dextrose gel applied to the buccal mucosa is an effective adjunct recommended by AAP for at-risk neonates who can tolerate feeding. Glucose monitoring per protocol (q1–3 hours) is essential because neonates can re-dip rapidly; neurologic status (seizures, altered tone) is monitored because prolonged neonatal hypoglycemia causes permanent brain injury.',
   },
+  {
+    id: 'cap-sepsis',
+    title: 'Community-Acquired Pneumonia Deteriorating to Sepsis',
+    vignette:
+      'A 71-year-old male with a 2-day history of productive cough, fever, and right-sided pleuritic chest pain was admitted 18 hours ago with community-acquired pneumonia. He was started on ceftriaxone and azithromycin IV. The nurse notes he is now more confused than on admission. Vital signs: T 39.8°C (up from 38.2°C on admission), HR 118 bpm, RR 28 breaths/min, BP 92/58 mmHg (down from 128/78 mmHg on admission), O₂ saturation 88% on 4 L/min nasal cannula. Urine output over the past 4 hours is 60 mL.',
+    conditions: [
+      { id: 'cap-worsening', text: 'Community-acquired pneumonia progressing to septic shock' },
+      { id: 'antibiotic-allergy', text: 'Anaphylactic reaction to ceftriaxone' },
+      { id: 'pulmonary-embolism-cap', text: 'Pulmonary embolism superimposed on pneumonia' },
+      { id: 'adhf-cap', text: 'Acute decompensated heart failure triggered by pneumonia' },
+    ],
+    actions: [
+      { id: 'notify-rapid-response', text: 'Activate rapid response team and notify provider immediately' },
+      { id: 'upgrade-oxygen', text: 'Upgrade oxygen delivery to non-rebreather mask (10–15 L/min)' },
+      { id: 'hold-antibiotics', text: 'Hold antibiotics pending blood culture results to avoid sterilizing cultures' },
+      { id: 'restrict-fluids-cap', text: 'Restrict IV fluids to prevent pulmonary edema in a patient with pneumonia' },
+      { id: 'ambulate-cap', text: 'Assist the patient to ambulate to improve lung expansion' },
+    ],
+    parameters: [
+      { id: 'map-cap', text: 'Mean arterial pressure (MAP)' },
+      { id: 'lactate-cap', text: 'Serum lactate level' },
+      { id: 'temperature-cap', text: 'Temperature trend' },
+      { id: 'o2-sat-cap', text: 'Oxygen saturation' },
+      { id: 'urine-output-cap', text: 'Urine output (hourly)' },
+    ],
+    correctConditionId: 'cap-worsening',
+    correctActionIds: ['notify-rapid-response', 'upgrade-oxygen'],
+    correctParameterIds: ['map-cap', 'lactate-cap'],
+    rationale:
+      'The patient meets septic shock criteria: confirmed infection source (CAP), hypotension (BP 92/58 mmHg, MAP ≈ 69 mmHg — borderline), tachycardia, fever spike, worsening confusion, new oliguria (60 mL/4 hours = 15 mL/hr — well below the 0.5 mL/kg/hr threshold), and worsening hypoxia despite supplemental oxygen. This clinical picture represents pneumonia-source sepsis — the most common cause of sepsis. Activating the rapid response team ensures immediate escalation of care, bedside provider assessment, and initiation of the sepsis bundle (IV fluids, vasopressors if MAP remains < 65 mmHg, blood cultures if not yet obtained, lactate). Upgrading to non-rebreather mask addresses the dangerous oxygen desaturation (SpO₂ 88%) immediately while the sepsis response is activated. Antibiotics must NOT be held — this patient is already on appropriate empiric therapy and withholding antibiotics worsens outcomes; if cultures had not been drawn, they should be obtained immediately WITHOUT delaying the next antibiotic dose. MAP ≥ 65 mmHg is the primary hemodynamic resuscitation target in septic shock, and serum lactate > 2 mmol/L confirms tissue hypoperfusion even when blood pressure appears borderline — a lactate ≥ 4 mmol/L mandates immediate intervention regardless of blood pressure.',
+  },
 ];
