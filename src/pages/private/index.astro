@@ -92,20 +92,12 @@ const reviewNeededCount = (
 
 <script define:vars={{ base }}>
   const SESSION_KEY = 'lms_auth';
-  const REDIRECT_KEY = 'lms_redirect';
 
   const privateContent = document.getElementById('private-content');
   const logoutBtn = document.getElementById('logout-btn');
 
-  if (sessionStorage.getItem(SESSION_KEY) === 'ok') {
-    if (privateContent) privateContent.hidden = false;
-  } else {
-    sessionStorage.setItem(
-      REDIRECT_KEY,
-      window.location.pathname + window.location.search + window.location.hash
-    );
-    window.location.replace(base + 'login/');
-  }
+  // BaseLayout already redirected unauthenticated users, so we can safely reveal content.
+  if (privateContent) privateContent.hidden = false;
 
   logoutBtn?.addEventListener('click', () => {
     sessionStorage.removeItem(SESSION_KEY);
