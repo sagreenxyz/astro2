@@ -101,6 +101,8 @@
       </table>
     </div>
 
-    <button class="btn btn-soft btn-error btn-sm font-sans" onclick={clearHistory}> Clear History </button>
+    <button class="btn btn-soft btn-error btn-sm font-sans" onclick={clearHistory}>
+      Clear History
+    </button>
   {/if}
 </div>

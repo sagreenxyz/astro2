@@ -251,7 +251,8 @@ async function main() {
     // Extract note body (everything after frontmatter closing ---)
     // Handle both \n---\n and \r\n---\r\n (Windows line endings)
     const fmEndMatch = raw.match(/\n---\r?\n/);
-    const body = fmEndMatch?.index !== undefined ? raw.slice(fmEndMatch.index + fmEndMatch[0].length) : raw;
+    const body =
+      fmEndMatch?.index !== undefined ? raw.slice(fmEndMatch.index + fmEndMatch[0].length) : raw;
 
     // Check if an issue already exists for this note
     let existingIssueUrl;

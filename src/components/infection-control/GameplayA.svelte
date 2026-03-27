@@ -195,8 +195,9 @@
           {/each}
         </div>
         <div class="card-actions justify-between mt-4">
-          <button class="btn btn-soft btn-primary btn-sm font-sans" onclick={() => (phase = 'precaution')}
-            >← Back</button
+          <button
+            class="btn btn-soft btn-primary btn-sm font-sans"
+            onclick={() => (phase = 'precaution')}>← Back</button
           >
           <button class="btn btn-primary btn-sm font-sans" onclick={submitActions}>Next →</button>
         </div>
@@ -236,8 +237,9 @@
           {/each}
         </div>
         <div class="card-actions justify-between mt-4">
-          <button class="btn btn-soft btn-primary btn-sm font-sans" onclick={() => (phase = 'actions')}
-            >← Back</button
+          <button
+            class="btn btn-soft btn-primary btn-sm font-sans"
+            onclick={() => (phase = 'actions')}>← Back</button
           >
           <button
             class="btn btn-primary btn-sm font-sans"

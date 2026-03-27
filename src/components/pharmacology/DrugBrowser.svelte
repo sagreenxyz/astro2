@@ -30,7 +30,7 @@
     })
   );
 
-  const base = typeof window !== 'undefined' ? ((window as any).__ASTRO_BASE__ || '') : '';
+  const base = typeof window !== 'undefined' ? (window as any).__ASTRO_BASE__ || '' : '';
 </script>
 
 <div class="space-y-4">

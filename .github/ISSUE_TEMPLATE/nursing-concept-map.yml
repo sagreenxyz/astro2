@@ -33,7 +33,7 @@ body:
     attributes:
       label: Facility Name *
       description: Name of the clinical facility.
-      placeholder: 'e.g., St. Mary''s Medical Center'
+      placeholder: "e.g., St. Mary's Medical Center"
     validations:
       required: true
 

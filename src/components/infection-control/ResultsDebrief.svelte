@@ -39,7 +39,9 @@
 <div class="space-y-6">
   <!-- Header -->
   <div class="flex items-center gap-2">
-    <button class="btn btn-soft btn-primary btn-sm font-sans gap-1" onclick={onGoBack}>← All Cases</button>
+    <button class="btn btn-soft btn-primary btn-sm font-sans gap-1" onclick={onGoBack}
+      >← All Cases</button
+    >
     <h2 class="text-lg font-bold">Debrief — {c.title}</h2>
   </div>
 
@@ -161,7 +163,9 @@
 
   <!-- Actions -->
   <div class="flex flex-wrap gap-2 justify-center">
-    <button class="btn btn-soft btn-primary btn-sm font-sans" onclick={onGoBack}>← Case Lobby</button>
+    <button class="btn btn-soft btn-primary btn-sm font-sans" onclick={onGoBack}
+      >← Case Lobby</button
+    >
     <button class="btn btn-primary btn-sm font-sans" onclick={onPlayAgain}>🔄 Play Again</button>
   </div>
 </div>

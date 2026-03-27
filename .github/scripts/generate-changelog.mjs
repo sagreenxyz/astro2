@@ -80,10 +80,7 @@ function parseFrontmatter(raw) {
 
   // Prefer folded blocks first (common for long descriptions), then inline
   const summary =
-    getBlock('summary') ||
-    getLine('summary') ||
-    getBlock('description') ||
-    getLine('description');
+    getBlock('summary') || getLine('summary') || getBlock('description') || getLine('description');
 
   const mechanismOfAction = getLine('mechanismOfAction');
   const drugClass = getLine('drugClass');
@@ -106,7 +103,12 @@ function parseFrontmatter(raw) {
     if (blockTags) {
       tags = blockTags[1]
         .split('\n')
-        .map((line) => line.replace(/^\s+-\s+/, '').trim().replace(/^['"]|['"]$/g, ''))
+        .map((line) =>
+          line
+            .replace(/^\s+-\s+/, '')
+            .trim()
+            .replace(/^['"]|['"]$/g, '')
+        )
         .filter(Boolean);
     }
   }
@@ -140,15 +142,11 @@ async function main() {
   let diffOutput;
   try {
     if (isFirstPush) {
-      diffOutput = execSync(
-        `git diff-tree --no-commit-id -r --name-status ${headSha}`,
-        { encoding: 'utf8' }
-      );
+      diffOutput = execSync(`git diff-tree --no-commit-id -r --name-status ${headSha}`, {
+        encoding: 'utf8',
+      });
     } else {
-      diffOutput = execSync(
-        `git diff --name-status ${beforeSha} ${headSha}`,
-        { encoding: 'utf8' }
-      );
+      diffOutput = execSync(`git diff --name-status ${beforeSha} ${headSha}`, { encoding: 'utf8' });
     }
   } catch (err) {
     console.error('Failed to get git diff:', err.message);
@@ -253,9 +251,7 @@ async function main() {
 
     // Build YAML tags as an inline sequence of single-quoted strings
     const tagsYaml =
-      tags.length > 0
-        ? `[${tags.map((t) => `'${yamlEscape(t)}'`).join(', ')}]`
-        : '[]';
+      tags.length > 0 ? `[${tags.map((t) => `'${yamlEscape(t)}'`).join(', ')}]` : '[]';
 
     // Assemble the changelog MDX file
     const mdxContent = `---
@@ -280,9 +276,7 @@ relatedUrl: ${relatedUrl}
     console.log(`✅ Generated changelog entry: ${changelogFilename}`);
   }
 
-  console.log(
-    `Done — generated ${generated} changelog ${generated === 1 ? 'entry' : 'entries'}.`
-  );
+  console.log(`Done — generated ${generated} changelog ${generated === 1 ? 'entry' : 'entries'}.`);
 }
 
 main().catch((err) => {
