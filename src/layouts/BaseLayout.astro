@@ -42,7 +42,7 @@ const privateLink = { href: `${base}private/`, label: 'Private' };
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <title>{title} | Root</title>
   </head>
-  <body class="min-h-screen flex flex-col text-base-content" style="background-color:#f5f5f7;">
+  <body class="min-h-screen flex flex-col text-base-content" style="background-color:#f5f5f7;display:none">
     <!-- Navbar -->
     <header class="navbar bg-white border-b border-base-300 px-4 shadow-sm">
       <!-- Brand -->
@@ -195,6 +195,19 @@ const privateLink = { href: `${base}private/`, label: 'Private' };
 
 <script define:vars={{ base }}>
   const SESSION_KEY = 'lms_auth';
+  const REDIRECT_KEY = 'lms_redirect';
+
+  // Guard: redirect unauthenticated visitors to the login page.
+  if (sessionStorage.getItem(SESSION_KEY) !== 'ok') {
+    sessionStorage.setItem(
+      REDIRECT_KEY,
+      window.location.pathname + window.location.search + window.location.hash
+    );
+    window.location.replace(base + 'login/');
+  } else {
+    // Authenticated — reveal the page.
+    document.body.style.display = '';
+  }
 
   function applyAuthState() {
     const loggedIn = sessionStorage.getItem(SESSION_KEY) === 'ok';

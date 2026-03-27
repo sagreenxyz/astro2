@@ -24,17 +24,17 @@ function formatDate(date: Date): string {
 
 const features = [
   {
-    icon: '🌐',
-    title: 'Public Side',
-    description: 'Open articles and information available to everyone — no account required.',
-    href: `${base}encyclopedia/`,
-  },
-  {
     icon: '🛡️',
     title: 'Secure by Design',
     description:
-      'Credentials are hashed client-side with SHA-256. Content encrypted with AES-256-GCM. No server required.',
+      'Credentials are hashed client-side with SHA-256. No server required.',
     href: null,
+  },
+  {
+    icon: '🔒',
+    title: 'Protected Content',
+    description: 'All content is available to authenticated users — sign in to access courses, notes, quizzes, and more.',
+    href: `${base}login/`,
   },
 ];
 
@@ -130,8 +130,8 @@ const sections = [
     </h1>
 
     <p class="text-lg text-base-content/70 max-w-2xl mx-auto mb-3 leading-relaxed">
-      A public knowledge hub with courses, encyclopedias, notes, presentations, quizzes, and more —
-      freely available to everyone.
+      A knowledge hub with courses, encyclopedias, notes, presentations, quizzes, and more —
+      available to authenticated users.
     </p>
 
     <p class="text-sm text-base-content/40 mb-10">
@@ -144,7 +144,7 @@ const sections = [
         href={`${base}encyclopedia/`}
         class="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-base hover:bg-indigo-700 transition-colors shadow-md"
       >
-        Browse Public Content
+        Browse Content
         <span aria-hidden="true">→</span>
       </a>
     </div>
