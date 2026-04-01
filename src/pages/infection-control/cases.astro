@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CASES } from '../../lib/infection-control/cases';
+import { MICROBES } from '../../lib/infection-control/microbes';
+
+const DIFFICULTY_BADGE: Record<string, string> = {
+  basic: 'badge-success',
+  intermediate: 'badge-warning',
+  advanced: 'badge-error',
+};
+
+const PRECAUTION_LABEL: Record<string, string> = {
+  standard: 'Standard',
+  contact: 'Contact',
+  droplet: 'Droplet',
+  airborne: 'Airborne',
+};
+
+const PRECAUTION_BADGE: Record<string, string> = {
+  standard: 'badge-ghost',
+  contact: 'badge-warning',
+  droplet: 'badge-info',
+  airborne: 'badge-error',
+};
+
+const PRECAUTION_EMOJI: Record<string, string> = {
+  standard: '🟢',
+  contact: '🟡',
+  droplet: '🔵',
+  airborne: '🔴',
+};
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Infection Control — Case Synopses"
+  description="High-level overviews of all nine infection-control clinical case simulations, explaining what happens in each scenario and how the situation is resolved."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8 space-y-8">
+    <!-- Header -->
+    <div class="space-y-2">
+      <div class="flex flex-wrap items-center gap-2">
+        <a href={`${base}infection-control/`} class="btn btn-ghost btn-sm font-sans gap-1"
+          >← Infection Control Challenge</a
+        >
+      </div>
+      <h1 class="text-3xl font-extrabold">🦠 Case Synopses</h1>
+      <p class="text-base opacity-70 max-w-2xl">
+        Each simulation below presents a distinct infection-control challenge. The synopsis
+        summarises what occurs in the scenario and how the situation is resolved — helping you
+        understand the clinical reasoning before (or after) working through the interactive
+        simulation.
+      </p>
+    </div>
+
+    <!-- Case list -->
+    <div class="space-y-6">
+      {
+        CASES.map((c, index) => {
+          const microbe = MICROBES.find((m) => m.id === c.microbeId);
+          const precaution = microbe?.primaryPrecaution ?? 'standard';
+          return (
+            <article class="card bg-base-100 border border-base-300 shadow-sm">
+              <div class="card-body gap-3 p-6">
+                <!-- Number + title row -->
+                <div class="flex flex-wrap items-start gap-3">
+                  <span class="text-2xl font-black opacity-20 select-none leading-none">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <h2 class="text-lg font-bold leading-snug">{c.title}</h2>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                      <span class={`badge badge-sm ${DIFFICULTY_BADGE[c.difficulty]}`}>
+                        {c.difficulty}
+                      </span>
+                      <span class="badge badge-ghost badge-sm capitalize">{c.setting}</span>
+                      <span class={`badge badge-sm ${PRECAUTION_BADGE[precaution]}`}>
+                        {PRECAUTION_EMOJI[precaution]} {PRECAUTION_LABEL[precaution]} Precautions
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Synopsis -->
+                <p class="text-sm leading-relaxed">{c.synopsis}</p>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1">
+                  {c.tags.map((tag) => (
+                    <span class="badge badge-outline badge-xs">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <!-- Call to action -->
+    <div class="text-center pt-4">
+      <a href={`${base}infection-control/`} class="btn btn-primary font-sans gap-2">
+        🦠 Launch Infection Control Challenge
+      </a>
+    </div>
+  </div>
+</BaseLayout>
