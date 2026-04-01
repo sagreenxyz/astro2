@@ -162,6 +162,7 @@ export interface Case {
   id: string;
   microbeId: string;
   title: string;
+  synopsis: string; // high-level summary of what happens and how it is resolved
   vignette: string; // opening patient scenario
   setting: CaseSetting;
   difficulty: CaseDifficulty;

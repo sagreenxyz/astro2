@@ -8,6 +8,8 @@ export const CASES: Case[] = [
     id: 'mrsa-wound',
     microbeId: 'mrsa',
     title: 'Post-Op Wound: The Draining Incision',
+    synopsis:
+      'A post-operative hip-replacement patient is found to have an MRSA-positive draining wound while sharing a semi-private room. The nurse identifies the contact-transmission risk, initiates Contact Precautions (gloves + gown), moves the patient to a private room, and dedicates all bedside equipment to prevent spread. The situation is resolved through proper isolation, alcohol-based hand hygiene after glove removal, and staff education on avoiding shared equipment.',
     vignette:
       'You are a med-surg nurse caring for Mr. Alvarez, a 68-year-old diabetic man who is post-op day 3 following hip arthroplasty. You notice his surgical wound has significant purulent drainage. The wound culture report just arrived: MRSA-positive. He is currently in a semi-private room with one roommate. He has a shared stethoscope and BP cuff at the bedside.',
     setting: 'med-surg',
@@ -378,6 +380,8 @@ export const CASES: Case[] = [
     id: 'tb-pulmonary',
     microbeId: 'tb',
     title: 'TB Suspect: The Persistent Cough',
+    synopsis:
+      'A patient with a three-month productive cough, night sweats, weight loss, and cavitary lung lesions on chest X-ray presents with strong clinical signs of pulmonary TB. The nurse must act on clinical suspicion alone — before culture results return — by immediately placing the patient in an Airborne Infection Isolation Room (AIIR) and donning a fit-tested N95 respirator. The situation is resolved by maintaining strict airborne precautions, ensuring the patient wears a surgical mask during any transport, and coordinating with public health for contact tracing and initiation of antitubercular therapy.',
     vignette:
       'You are assigned to care for Ms. Chen, a 45-year-old immigrant woman admitted with a 3-month history of productive cough, night sweats, and a 15-pound weight loss. Chest X-ray shows upper-lobe cavitary lesions. Sputum AFB smear is pending. The charge nurse tells you an AIIR room is available.',
     setting: 'med-surg',
@@ -733,6 +737,8 @@ export const CASES: Case[] = [
     id: 'influenza-icu',
     microbeId: 'influenza',
     title: 'Flu in the ICU: When Droplets Become Aerosols',
+    synopsis:
+      'An elderly ICU patient with severe influenza A pneumonia requires emergency endotracheal intubation, turning a standard droplet-precaution scenario into an aerosol-generating procedure (AGP). The nurse must recognize the escalation trigger and upgrade to full Airborne Precautions — including a fit-tested N95, eye protection, and gown — before the procedure begins. The situation is resolved by limiting room personnel during the AGP, using correct PPE, and returning to Droplet Precautions for routine post-intubation care.',
     vignette:
       'Mr. Thompson, a 72-year-old man with COPD, is admitted to the ICU with severe influenza A pneumonia. His O2 saturation is 86% on high-flow O2. The intensivist has ordered emergent endotracheal intubation. You are the bedside nurse assisting with the procedure.',
     setting: 'icu',
@@ -1061,6 +1067,8 @@ export const CASES: Case[] = [
     id: 'cdiff-colitis',
     microbeId: 'cdiff',
     title: 'C. diff: The Dangerous Diarrhea',
+    synopsis:
+      'An elderly patient on broad-spectrum antibiotics develops confirmed Clostridioides difficile infection (CDI) with six loose stools in one day. The critical challenge is recognizing that alcohol-based hand rub does not kill C. diff spores — soap and water is mandatory. Contact Precautions are initiated, the patient is moved to a private room, and bleach-based disinfectants replace standard wipes for environmental cleaning. The situation is resolved through rigorous spore-killing protocols, antimicrobial stewardship review, and proper isolation to prevent ward-wide spread.',
     vignette:
       'Mrs. Park, a 78-year-old woman, was admitted 3 days ago for a UTI and started on broad-spectrum antibiotics. She now has 6 loose stools today. Stool C. diff toxin assay returns POSITIVE. She is in a semi-private room. Your hand hygiene station outside her room has alcohol-based hand rub.',
     setting: 'med-surg',
@@ -1373,6 +1381,8 @@ export const CASES: Case[] = [
     id: 'covid19-med-surg',
     microbeId: 'covid19',
     title: 'COVID-19: Navigating the PPE Maze',
+    synopsis:
+      'An unvaccinated patient with COVID-19 pneumonia is on low-flow oxygen when the physician orders high-flow nasal cannula (HFNC) — an aerosol-generating procedure. The nurse must layer protections correctly: Droplet Precautions plus eye protection for routine care, then escalate to N95 respirator before HFNC setup. The situation is resolved by selecting the right PPE level for each care activity, following a strict doffing sequence to avoid self-contamination, and understanding how AGPs change precaution requirements even in an already-isolated patient.',
     vignette:
       'You are caring for Ms. Rivera, a 55-year-old unvaccinated woman admitted for COVID-19 pneumonia. She is on 4L nasal cannula. The physician orders a sputum sample via nasopharyngeal swab and plans to start high-flow nasal cannula (HFNC) at 40 L/min. The patient is in a negative-pressure room.',
     setting: 'med-surg',
@@ -1690,6 +1700,8 @@ export const CASES: Case[] = [
     id: 'vre-uti',
     microbeId: 'vre',
     title: 'VRE: The Antibiotic-Resistant Gut Bug',
+    synopsis:
+      'An immunocompromised kidney-transplant recipient develops a UTI caused by Vancomycin-resistant Enterococcus (VRE) after prolonged ICU antibiotic therapy. Contact Precautions are initiated, the patient is moved to a private room, and all bedside equipment is dedicated. Unlike C. diff, alcohol-based hand rub effectively kills VRE. The situation is resolved through strict contact precautions, equipment dedication, antimicrobial stewardship, and obtaining clearance surveillance cultures before precautions are lifted.',
     vignette:
       'Mr. Thompson, a 67-year-old kidney transplant recipient, has been in the ICU for 10 days on broad-spectrum antibiotics including vancomycin. He develops a urinary tract infection; urine culture returns positive for Vancomycin-resistant Enterococcus faecium (VRE). He is currently sharing a semi-private room.',
     setting: 'icu',
@@ -2006,6 +2018,8 @@ export const CASES: Case[] = [
     id: 'norovirus-outbreak',
     microbeId: 'norovirus',
     title: 'Norovirus: The Cruise Ship Bug Hits the Med-Surg Floor',
+    synopsis:
+      'Three patients and two nursing assistants on a busy med-surg floor simultaneously develop projectile vomiting and diarrhea, signaling a norovirus outbreak. The nurse must manage an active vomiting incident while coordinating unit-wide outbreak control: Contact Precautions for all ill patients, surgical masks during vomiting cleanup, soap and water (not ABHR) for hand hygiene, and bleach-based disinfectants for environmental decontamination. The situation is resolved by cohorting affected patients, excluding symptomatic staff for 48–72 hours post-resolution, and notifying infection control to halt further spread.',
     vignette:
       'You are working the night shift on a 28-bed medical-surgical floor. Three patients in different rooms have developed acute onset nausea, projectile vomiting, and watery diarrhea within the past 4 hours. Two nursing assistants also report feeling nauseated. You suspect a norovirus outbreak. One of the affected patients, Mr. Alvarez (72 years old), just vomited across the floor of his semi-private room.',
     setting: 'med-surg',
@@ -2336,6 +2350,8 @@ export const CASES: Case[] = [
     id: 'rsv-pediatric',
     microbeId: 'rsv',
     title: 'RSV: Protecting the Premature Infant',
+    synopsis:
+      "A six-week-old premature infant with confirmed RSV bronchiolitis is admitted to an open bay alongside other vulnerable neonates. Because RSV spreads by both direct contact with nasal secretions and large respiratory droplets, both Contact and Droplet Precautions are required — making this a common pitfall. The primary HCW infection route is self-inoculation via touching one's eyes or nose with contaminated hands. The situation is resolved by moving the infant to a private room, using gloves, gown, and surgical mask, avoiding facial self-touch, and discussing palivizumab prophylaxis for high-risk premature infants.",
     vignette:
       'You are a nurse on a pediatric unit. Baby Elena, a 6-week-old infant born at 28 weeks gestation, is admitted with worsening respiratory distress, nasal flaring, intercostal retractions, and oxygen saturation of 88% on room air. RSV rapid antigen test is POSITIVE. She is in an open-bay room with two other infants, one of whom is also a premature neonate.',
     setting: 'pediatric',
@@ -2668,6 +2684,8 @@ export const CASES: Case[] = [
     id: 'meningitis-ed',
     microbeId: 'n-meningitidis',
     title: 'Meningococcal Meningitis: Time Is Brain (and Life)',
+    synopsis:
+      'A college student arrives in the ED with the classic meningococcal triad — sudden severe headache, high fever, neck stiffness — plus a non-blanching petechial rash suggesting meningococcemia. Droplet Precautions and a private room are required immediately, but the highest-priority action is starting antibiotics without waiting for lumbar puncture results. The situation is resolved by balancing rapid antibiotic administration with isolation measures, arranging chemoprophylaxis evaluation for close contacts (including the roommate and any HCW with unprotected exposure), and notifying public health for mandatory outbreak reporting.',
     vignette:
       'A 19-year-old college student, Marcus, is brought to the ED by his roommate with a 6-hour history of severe headache, high fever (40.1°C), neck stiffness, and photophobia. On examination you note a non-blanching petechial rash spreading across his trunk and legs. You suspect meningococcal meningitis/septicemia. He is currently in an open ED bay, and his roommate is standing nearby asking questions.',
     setting: 'ed',
